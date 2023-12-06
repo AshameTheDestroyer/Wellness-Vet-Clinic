@@ -4,7 +4,7 @@ import React, { useState, useEffect, createContext } from "react";
 
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
 import ServicesPage from "./pages/ServicesPage/ServicesPage";
 import ResourcesPage from "./pages/ResourcesPage/ResourcesPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
@@ -80,7 +80,7 @@ function Index(): React.ReactElement {
                     </Route>
 
                     <Route path="/Landing" element={<LandingPage />} />
-                    <Route path="/Registration" element={<RegistrationPage />} />
+                    <Route path="/Authentication" element={<AuthenticationPage />} />
                 </Routes>
             </MainContext.Provider>
         </HashRouter>
