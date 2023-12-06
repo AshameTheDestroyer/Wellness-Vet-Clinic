@@ -11,8 +11,6 @@ type NavbarProps = {
 };
 
 export default function NavigationBar(props: NavbarProps): React.ReactElement {
-    const location = useLocation();
-
     return (
         <nav className="navigation-bar" data-opened={props.isOpen}>
             <ul>
@@ -30,6 +28,8 @@ type PageAnchorElementProps = {
 }
 
 function PageAnchorElement(props: PageAnchorElementProps): React.ReactElement {
+    const location = useLocation();
+
     const anchor: PageAnchor = {
         name: (typeof props.anchor == "string") ? props.anchor : props.anchor.name,
         url: RemoveSpaces(
