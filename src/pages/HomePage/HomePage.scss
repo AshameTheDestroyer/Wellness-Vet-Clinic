@@ -1,0 +1,62 @@
+@use "../../index.scss";
+@import url("https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap");
+
+#home-page {
+
+    &>main {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+
+        &>:is(main, section, figure) {
+            display: flex;
+            flex-direction: column;
+            place-content: start center;
+            place-items: start center;
+
+            height: calc(100dvh - var(--header-height) - var(--padding) * 2);
+        }
+
+        &>main {
+            gap: 2rem;
+
+            strong {
+                // text-transform: capitalize;
+                letter-spacing: 1.5rem;
+                font-size: 5rem;
+                font-family: "Beau Rivage", cursive;
+
+                color: var(--ternary-colour);
+            }
+        }
+
+        &>figure {
+            display: grid;
+            grid-template-columns: 1fr;
+            place-content: center;
+            place-items: center;
+
+            &>* {
+                grid-row: 1;
+                grid-column: 1;
+            }
+
+            img {
+                width: 70vmin;
+                aspect-ratio: 1;
+                object-fit: contain;
+            }
+
+            svg {
+                fill: var(--ternary-colour);
+                stroke: none;
+
+                width: 95vmin;
+            }
+        }
+
+        @media (min-width: index.$first-screen-width) {
+            flex-direction: row;
+        }
+    }
+}

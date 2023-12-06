@@ -1,0 +1,97 @@
+.custom-input-container {
+    --padding: 1.5rem;
+    --placeholder-colour: #555;
+
+    display: flex;
+    flex-direction: row;
+    place-content: center stretch;
+    place-items: center stretch;
+
+    sup {
+        position: relative;
+        left: 0.5ch;
+
+        color: orangered;
+    }
+
+    &.placeholder-always-shown {
+        $gap: 0.5rem;
+
+        display: flex;
+        flex-direction: column;
+        place-content: stretch;
+        place-items: stretch;
+        gap: $gap;
+
+        label {
+            bottom: 0;
+            left: 0;
+
+            display: block !important;
+        }
+
+        input {
+            order: 2;
+
+            padding-inline: 0;
+
+            border-radius: 0;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+
+            &:not(:focus-within)+label {
+                transform: translateY(calc(100% + $gap * 2));
+            }
+
+            &:not(:placeholder-shown)+label {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &.transparent {
+        --padding: 0;
+
+        input {
+            background-color: transparent;
+
+            border-bottom: 0.2rem solid var(--half-transparent);
+            border-radius: 0;
+        }
+    }
+
+    &>* {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    input {
+        padding: 1rem var(--padding);
+
+        background-color: var(--background-colour);
+
+        &:not(:placeholder-shown)+label {
+            display: none;
+        }
+
+        &:not([type=password]) {
+            text-overflow: ellipsis;
+        }
+    }
+
+    label {
+        position: relative;
+        left: var(--padding);
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        color: var(--placeholder-colour);
+
+        transition: inset 250ms, transform 250ms;
+
+        pointer-events: none;
+    }
+}

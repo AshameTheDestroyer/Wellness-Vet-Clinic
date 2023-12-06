@@ -1,0 +1,17 @@
+.toggle-button {
+
+    &>button {
+        width: calc(var(--width));
+        aspect-ratio: var(--toggle-button-ratio);
+    }
+
+    &-checked {
+
+        &>button>span {
+            left: 100%;
+            transform: translateX(-100%);
+
+            background-color: var(--fore-colour);
+        }
+    }
+}
