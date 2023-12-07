@@ -5,6 +5,7 @@ import "./NavigationBar.scss";
 
 import CrossIcon from "../../assets/icons/CrossIcon";
 import HamburgerButtonIcon from "../../assets/icons/HamburgerButtonIcon";
+import Role from "../../enums/Role";
 
 type NavbarProps = {
     anchors: Array<PageAnchor>;
@@ -31,10 +32,20 @@ type PageAnchorElementProps = {
 }
 
 function FormatPageAnchor(anchor: PageAnchor): Exclude<PageAnchor, string> {
+    if (typeof anchor == "string") {
+        return {
+            name: anchor,
+            subAnchors: [],
+            role: Role.Customer,
+            url: anchor.replace(/ /g, ""),
+        };
+    }
+
     return {
-        name: (typeof anchor == "string") ? anchor : anchor.name,
-        url: ((typeof anchor == "string") ? anchor : (anchor.url ?? anchor.name)).replace(/ /g, ""),
-        subAnchors: ((typeof anchor == "string") ? undefined : (anchor.subAnchors)) ?? [],
+        ...anchor,
+        role: anchor.role ?? Role.Customer,
+        subAnchors: (anchor.subAnchors) ?? [],
+        url: (anchor.url ?? anchor.name).replace(/ /g, ""),
     };
 }
 

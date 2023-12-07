@@ -10,7 +10,35 @@ const PAGE_ANCHORS: Array<PageAnchor> = [
         subAnchors: [{
             name: "Appointment Booking",
             url: "Booking",
-            subAnchors: ["a", "b", "c"],
+            subAnchors: ["a", "b", {
+                name: "Appointment Booking",
+                url: "Booking",
+                subAnchors: ["a", "b", {
+                    name: "Appointment Booking",
+                    url: "Booking",
+                    subAnchors: ["a", "b", {
+                        name: "Appointment Booking",
+                        url: "Booking",
+                        subAnchors: ["a", "b", {
+                            name: "Appointment Booking",
+                            url: "Booking",
+                            subAnchors: ["a", "b", "c"],
+                        }, {
+                                name: "Appointment Dashboard",
+                                url: "",
+                            }],
+                    }, {
+                            name: "Appointment Dashboard",
+                            url: "",
+                        }],
+                }, {
+                        name: "Appointment Dashboard",
+                        url: "",
+                    }],
+            }, {
+                    name: "Appointment Dashboard",
+                    url: "",
+                }],
         }, {
             name: "Appointment Dashboard",
             url: "",

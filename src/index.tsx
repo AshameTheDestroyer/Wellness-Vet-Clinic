@@ -13,6 +13,7 @@ import "./utils/extensions/ToClassName";
 
 import "./index.scss";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import PAGE_ANCHORS from "./constants/PageAnchors";
 
 type MainStateProps = {
     isDarkThemed: boolean;

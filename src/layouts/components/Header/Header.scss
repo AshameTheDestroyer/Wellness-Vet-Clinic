@@ -74,9 +74,9 @@
 
         padding-bottom: $navigation-bar-block-padding;
 
-        background-color: var(--main-colour);
-
         transition: transform 500ms;
+
+        overflow: auto;
 
         &[data-opened=false] {
             transform: translateX(100%);
