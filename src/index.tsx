@@ -14,6 +14,7 @@ import "./utils/extensions/ToClassName";
 import "./index.scss";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PAGE_ANCHORS from "./constants/PageAnchors";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 type MainStateProps = {
     isDarkThemed: boolean;
@@ -68,7 +69,7 @@ function Index(): React.ReactElement {
     }
 
     return (
-        <HashRouter basename={window.location.pathname || ""}>
+        <HashRouter basename="/">
             <MainContext.Provider value={state}>
                 <Routes>
                     <Route path="/" element={<MainPageLayout />}>
@@ -93,6 +94,8 @@ function Index(): React.ReactElement {
 
                     <Route path="/Landing" element={<LandingPage />} />
                     <Route path="/Authentication" element={<AuthenticationPage />} />
+
+                    <Route path="*" element={<ErrorPage />} />
                 </Routes>
             </MainContext.Provider>
         </HashRouter>
