@@ -10,6 +10,7 @@ const PAGE_ANCHORS: Array<PageAnchor> = [
         subAnchors: [{
             name: "Appointment Booking",
             url: "Booking",
+            subAnchors: ["a", "b", "c"],
         }, {
             name: "Appointment Dashboard",
             url: "",

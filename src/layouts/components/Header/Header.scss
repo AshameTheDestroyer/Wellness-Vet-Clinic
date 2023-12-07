@@ -81,17 +81,6 @@
         &[data-opened=false] {
             transform: translateX(100%);
         }
-
-        ul {
-            flex-direction: column;
-            gap: 0;
-
-            li a {
-                padding: 2rem 4rem;
-
-                border-radius: 0;
-            }
-        }
     }
 
     #toggling-button-displayer {

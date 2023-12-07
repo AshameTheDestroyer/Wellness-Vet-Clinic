@@ -1,34 +1,87 @@
 .navigation-bar {
 
     ul {
-        height: 100%;
-
-        flex-direction: row;
-        gap: 3rem;
+        gap: 0;
 
         padding: 0;
         background-color: inherit;
+
+        overflow: hidden;
 
         li {
             list-style-type: none;
 
             display: flex;
+            flex-direction: column;
 
             background-color: inherit;
 
             a {
+                --padding-inline: 2rem;
+                --padding-block: 1rem;
+
                 text-decoration: none;
-                text-align: center;
+
+                position: relative;
 
                 flex-grow: 1;
+                display: flex;
+                place-content: center end;
+                place-items: center end;
+                gap: 1rem;
+
+                padding-inline: var(--padding-inline);
+                padding-block: var(--padding-block);
 
                 background-color: inherit;
 
                 transition: background-color 500ms;
+
+                &[data-nesting-index] {
+                    --nesting-index: 1;
+                    --margin-per-nesting: 2rem;
+                    --margin-right: calc(var(--margin-per-nesting) * var(--nesting-index));
+
+                    margin-right: var(--margin-right);
+
+                    isolation: isolate;
+
+                    &::before {
+                        content: "";
+
+                        display: flex;
+                        flex-direction: column;
+                        place-content: end center;
+                        place-items: end center;
+
+                        position: absolute;
+                        top: 0;
+                        left: 100%;
+                        bottom: 0;
+                        transform: translateX(-50%);
+
+                        border-right: 2px solid var(--half-transparent);
+
+                        z-index: -1;
+                    }
+                }
             }
 
-            &:is([data-navigated-to=true], :hover) a {
+            &:is([data-navigated-to=true], :hover)>a {
                 background-color: var(--main-lighter-colour);
+            }
+
+            &[data-is-folded=false] ul {
+                height: 0;
+            }
+
+            svg {
+                $size: 2rem;
+
+                width: $size;
+                height: $size;
+
+                margin-right: calc(-1 * var(--padding-inline) / 2);
             }
         }
     }

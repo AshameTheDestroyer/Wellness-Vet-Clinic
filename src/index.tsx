@@ -6,7 +6,6 @@ import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
 import ServicesPage from "./pages/ServicesPage/ServicesPage";
-import ResourcesPage from "./pages/ResourcesPage/ResourcesPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import MainPageLayout from "./layouts/MainPageLayout/MainPageLayout";
 
@@ -75,8 +74,20 @@ function Index(): React.ReactElement {
                         <Route index element={<HomePage />} />
                         <Route path="/About" element={<AboutPage />} />
                         <Route path="/Services" element={<ServicesPage />} />
-                        <Route path="/Resources" element={<ResourcesPage />} />
                         <Route path="/ContactUs" element={<ContactUsPage />} />
+                        <Route path="/Pets" element={<ContactUsPage />} />
+
+                        <Route path="/Appointments" element={<ContactUsPage />}>
+                            <Route path="/Appointments/Booking" element={<ContactUsPage />}>
+                                <Route path="/Appointments/Booking/a" element={<ContactUsPage />} />
+                                <Route path="/Appointments/Booking/b" element={<ContactUsPage />} />
+                                <Route path="/Appointments/Booking/c" element={<ContactUsPage />} />
+                            </Route>
+                            <Route index element={<ContactUsPage />} />
+                        </Route>
+
+                        <Route path="/Doctors" element={<ContactUsPage />} />
+                        <Route path="/Reports" element={<ContactUsPage />} />
                     </Route>
 
                     <Route path="/Landing" element={<LandingPage />} />
