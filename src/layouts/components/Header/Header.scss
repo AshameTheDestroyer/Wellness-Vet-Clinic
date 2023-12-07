@@ -30,42 +30,34 @@
         place-items: center;
         gap: 2rem;
 
-        &>img {
+        #logo {
             position: absolute;
             top: calc($header-padding / 2);
             left: calc($header-padding / 2);
 
             width: calc($logo-size - $logo-border-thickness * 2);
-            aspect-ratio: 1;
 
             background-color: var(--secondary-colour);
 
             border-radius: 100%;
             border: $logo-border-thickness solid $header-background-colour;
-
-            cursor: pointer;
-
-            z-index: 1;
         }
 
         &>p {
             margin-left: $logo-size;
         }
 
-        #signing-button-displayer {
+        button {
+            padding: 0;
 
-            button {
-                padding: 0;
+            a {
+                text-decoration: none;
 
-                a {
-                    text-decoration: none;
+                padding: 1rem;
 
-                    padding: 1rem;
+                background-color: var(--main-lighter-colour);
 
-                    background-color: var(--main-lighter-colour);
-
-                    border-radius: inherit;
-                }
+                border-radius: inherit;
             }
         }
     }
@@ -82,23 +74,12 @@
 
         padding-bottom: $navigation-bar-block-padding;
 
-        background-color: var(--main-colour);
-
         transition: transform 500ms;
+
+        overflow: auto;
 
         &[data-opened=false] {
             transform: translateX(100%);
-        }
-
-        ul {
-            flex-direction: column;
-            gap: 0;
-
-            li a {
-                padding: 2rem 4rem;
-
-                border-radius: 0;
-            }
         }
     }
 

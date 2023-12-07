@@ -1,35 +1,34 @@
 import React, { useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 
-import "./RegistrationPage.scss";
+import "./AuthenticationPage.scss";
 
-import logo from "../../assets/images/transparent/logo.png";
 import dog_cat_wallpaper from "../../assets/images/wallpapers/dog_cat.jpg";
 import dog_cat_wallpaper_blurred from "../../assets/images/wallpapers/dog_cat.blurred.jpg";
 import CustomInput from "../../utils/components/CustomInput/CustomInput";
 import REGEX_PATTERNS from "../../utils/constants/RegexPatterns";
 import LazyImage from "../../utils/components/LazyImage/LazyImage";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import Logo from "../../layouts/components/Logo/Logo";
 
-export enum RegistrationMethod {
+export enum AuthenticationMethod {
     SignUp = "sign-up",
     Login = "login",
 }
 
-export default function RegistrationPage(): React.ReactElement {
+export default function AuthenticationPage(): React.ReactElement {
     const [searchParams, _setSearchParams] = useSearchParams();
-    const method: RegistrationMethod = searchParams.get("method") as RegistrationMethod;
-    const Navigate = useNavigate();
+    const method: AuthenticationMethod = searchParams.get("method") as AuthenticationMethod;
 
     return (
         <main id="signing-page">
             <main>
-                <img id="logo" src={logo} alt="The logo of the website." onClick={() => Navigate("/")} />
+                <Logo />
                 <main>
                     <form method="POST" action="/">
                         {(() => {
                             switch (method) {
-                                case RegistrationMethod.SignUp: return <SignUpSection />;
-                                case RegistrationMethod.Login: return <LoginSection />;
+                                case AuthenticationMethod.SignUp: return <SignUpSection />;
+                                case AuthenticationMethod.Login: return <LoginSection />;
                             }
                         })()}
                     </form>
@@ -100,7 +99,7 @@ function SignUpSection(): React.ReactElement {
 
             <p>
                 Already have an account?{" "}
-                <Link to={`/Registration?method=${RegistrationMethod.Login}`}>Login</Link>
+                <Link to={`/Authentication?method=${AuthenticationMethod.Login}`}>Login</Link>
             </p>
         </>
     );
@@ -128,7 +127,7 @@ function LoginSection(): React.ReactElement {
 
             <p>
                 Doesn't have an account?{" "}
-                <Link to={`/Registration?method=${RegistrationMethod.SignUp}`}>Sign up</Link>
+                <Link to={`/Authentication?method=${AuthenticationMethod.SignUp}`}>Sign up</Link>
             </p>
         </>
     );

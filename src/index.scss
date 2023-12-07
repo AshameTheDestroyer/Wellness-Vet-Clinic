@@ -127,17 +127,20 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
+    border: 0.3rem solid var(--half-transparent);
     background-color: var(--main-darker-colour);
 }
 
 *:not(body)::-webkit-scrollbar-track {
-    border: 0.3rem solid var(--half-transparent);
     border-radius: 100rem;
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: var(--half-transparent);
-    border-radius: 100vh;
+}
+
+*:not(body)::-webkit-scrollbar-thumb {
+    border-radius: 100rem;
 }
 
 @mixin text-shadow($thickness: 0.2rem, $colour: var(--main-colour)) {

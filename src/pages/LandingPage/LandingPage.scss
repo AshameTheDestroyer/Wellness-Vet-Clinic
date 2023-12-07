@@ -21,17 +21,6 @@
 
         padding: 2rem;
 
-        #logo {
-            $size: 10rem;
-
-            width: $size;
-            height: $size;
-
-            border-radius: 100%;
-
-            cursor: pointer;
-        }
-
         div {
             display: flex;
             gap: 2rem;
