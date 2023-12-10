@@ -1,7 +1,44 @@
-#main-footer {
-    padding: 1rem;
+#footer {
+    display: flex;
+    flex-direction: row;
+    place-content: center space-between;
+    place-items: center space-between;
+    flex-wrap: wrap;
 
+    padding: 3rem;
+
+    color: var(--background-colour);
     background-color: var(--main-colour);
 
     z-index: 10;
+
+    &>section {
+        display: flex;
+        flex-direction: column;
+        place-content: start center;
+        place-items: start center;
+        gap: 2rem;
+
+        .navigation-bar ul {
+            flex-direction: column;
+            gap: 1.5rem;
+
+            li a::after {
+                content: none;
+            }
+        }
+    }
+
+    .icon-text-displayer {
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        place-items: center;
+        gap: 2rem;
+
+        .icon-text svg {
+            fill: var(--background-colour);
+            stroke: var(--background-colour);
+        }
+    }
 }

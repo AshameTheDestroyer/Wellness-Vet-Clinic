@@ -1,0 +1,29 @@
+.social-media-button-displayer {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    gap: 1rem;
+
+    button {
+        $size: 3rem;
+
+        aspect-ratio: 1;
+        width: $size;
+        height: $size;
+
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        place-items: center;
+
+        padding: 0.6rem;
+
+        background-color: var(--background-colour);
+        border-radius: 100%;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
