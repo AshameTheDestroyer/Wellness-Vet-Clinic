@@ -3,12 +3,9 @@ import { createPortal } from "react-dom";
 
 import Coordinates from "../../types/Coordinates";
 import EitherOrNeither from "../../types/EitherOrNeither";
-import AudioManager from "../../managers/AudioManager/AudioManager";
 import ComponentProps, { ChildlessComponentProps, ComponentEventProps } from "../../types/ComponentProps";
 
 import "./Modal.scss";
-
-import notification_audio from "../../../assets/Audios/notification.mp3";
 
 type FormMethods = "GET" | "POST" | "UPDATE" | "DELETE";
 
@@ -19,7 +16,6 @@ export type ModalComponentProps = {
 };
 
 export type ModalProps = {
-    doesntPlayAudio?: boolean;
     preventOutsideClosing?: boolean;
     backgroundProps?: ChildlessComponentProps;
     backgroundIsAbsolutelyPositioned?: boolean;
@@ -57,12 +53,6 @@ export default function Modal(props: ModalProps): React.ReactElement {
             bottom: (props.coordinates.y > window.innerHeight * 3 / 4) ? `${window.innerHeight - props.coordinates.y}px` : "auto",
         }
     }
-
-    useEffect(() => {
-        if (!props.isOpen || props.doesntPlayAudio) { return; }
-
-        AudioManager.Play(notification_audio);
-    }, [props.isOpen, props.doesntPlayAudio]);
 
     function OnOutsideClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
         if (!props.preventOutsideClosing && e.currentTarget == e.target) { props.setIsOpen(false); }

@@ -33,9 +33,7 @@ export default function ErrorPage(): React.ReactElement {
                 </section>
             </main>
 
-            <figure>
-                <img src={cat_image} alt="A cat looking upwards." />
-            </figure>
+            <img src={cat_image} alt="A cat looking upwards." />
         </main>
     );
 }

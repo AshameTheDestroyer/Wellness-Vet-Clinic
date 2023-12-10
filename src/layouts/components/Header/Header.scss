@@ -16,10 +16,10 @@
 
     background-color: var(--background-colour);
 
+    z-index: 10;
+
     &.sticking-header {
         background-color: #FEFAE07C;
-
-        z-index: 10;
     }
 
     #logo {
@@ -42,4 +42,142 @@
         height: min-content;
         place-self: center;
     }
+}
+
+#signing-modal {
+    --padding: 4rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    place-content: center stretch;
+    place-items: center stretch;
+    gap: 1rem;
+
+    padding: var(--padding);
+
+    background-color: var(--background-colour);
+
+    z-index: 20;
+
+    #signing-modal-button {
+        position: absolute;
+        top: calc(var(--padding) / 2);
+        right: calc(var(--padding) / 2);
+        aspect-ratio: 1;
+
+        display: flex;
+        place-content: center;
+        place-items: center;
+
+        padding: 0;
+
+        background-color: transparent;
+
+        svg {
+            $size: 75%;
+
+            width: $size;
+            height: $size;
+        }
+    }
+
+    h2 {
+        grid-row: 1;
+        grid-column: 1 / -1;
+        place-self: center;
+
+        padding-bottom: 1.5rem;
+        padding-inline: 2.5rem;
+
+        border-bottom: 2px solid var(--fore-colour);
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        #custom-input-displayer {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        p a {
+            color: var(--main-colour);
+        }
+
+        button {
+            color: var(--background-colour);
+            background-color: var(--main-colour);
+        }
+    }
+
+    figure {
+        display: flex;
+        place-content: center end;
+        place-items: center end;
+
+        margin-bottom: calc(-1 * var(--padding));
+
+        img {
+            width: 25rem;
+            object-fit: contain;
+        }
+    }
+
+    .select-field {
+        --padding: 1rem;
+
+        margin-top: 3rem;
+        position: relative;
+
+        label {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            color: #555;
+
+            transition: transform 250ms, inset 250ms;
+
+            sup {
+                color: orangered;
+            }
+        }
+
+        select {
+            width: 100%;
+            padding: var(--padding);
+
+            outline: none;
+            border: none;
+            border-bottom: 2px solid var(--fore-colour);
+
+            font-size: larger;
+
+            padding: var(--padding) 0;
+
+            background-color: var(--background-colour);
+
+            &[data-is-empty=false]+label {
+                top: 0;
+                transform: translateY(-100%);
+            }
+        }
+    }
+
+    @media (max-width: index.$second-screen-width) {
+        grid-template-columns: 1fr;
+
+        figure {
+            display: none;
+        }
+    }
+}
+
+#signing-modal-background {
+    background-color: #ba856d81;
 }

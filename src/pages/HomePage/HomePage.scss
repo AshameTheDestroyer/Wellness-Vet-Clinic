@@ -49,7 +49,7 @@
             }
         }
 
-        figure {
+        &>figure {
             position: absolute;
             bottom: 0;
             right: 0;
@@ -81,7 +81,7 @@
                 font-size: max(min(var(--font-size), 5vw), 2em);
             }
 
-            figure {
+            &>figure {
                 position: relative;
                 top: 4rem;
 
@@ -107,7 +107,7 @@
                 width: min-content;
             }
 
-            figure {
+            &>figure {
                 display: none;
             }
         }
