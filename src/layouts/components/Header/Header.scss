@@ -1,111 +1,45 @@
 @use "../../../index.scss";
 
 #header {
-    $header-padding: 2rem;
-    $header-background-colour: var(--main-colour);
+    --padding: 1rem;
 
     position: sticky;
     top: 0;
+    height: calc(var(--header-height) - var(--padding) * 2);
 
-    height: calc(var(--header-height) - $header-padding * 2);
+    display: flex;
+    flex-direction: row;
+    place-content: center space-between;
+    place-items: center space-between;
 
-    display: grid;
-    grid-template-columns: 1fr auto;
-    place-content: center start;
-    place-items: center start;
-    gap: 1rem;
+    padding: var(--padding) calc(var(--padding) * 2);
 
-    padding: $header-padding;
+    background-color: var(--background-colour);
 
-    background-color: $header-background-colour;
+    &.sticking-header {
+        background-color: #FEFAE07C;
 
-    z-index: 10;
+        z-index: 10;
+    }
 
-    #header-left-side {
-        $logo-size: 9rem;
-        $logo-border-thickness: 0.75rem;
-
-        display: flex;
-        place-content: center;
-        place-items: center;
-        gap: 2rem;
-
-        #logo {
-            position: absolute;
-            top: calc($header-padding / 2);
-            left: calc($header-padding / 2);
-
-            width: calc($logo-size - $logo-border-thickness * 2);
-
-            background-color: var(--secondary-colour);
-
-            border-radius: 100%;
-            border: $logo-border-thickness solid $header-background-colour;
-        }
-
-        &>p {
-            margin-left: $logo-size;
-        }
-
-        button {
-            padding: 0;
-
-            a {
-                text-decoration: none;
-
-                padding: 1rem;
-
-                background-color: var(--main-lighter-colour);
-
-                border-radius: inherit;
-            }
-        }
+    #logo {
+        place-self: center;
     }
 
     .navigation-bar {
-        $navigation-bar-block-padding: 3.5rem;
+        display: flex;
 
-        position: fixed;
-        top: var(--header-height);
-        right: 0;
-
-        height: calc(100vh - $navigation-bar-block-padding * 2);
-        height: calc(100dvh - $navigation-bar-block-padding * 2);
-
-        padding-bottom: $navigation-bar-block-padding;
-
-        transition: transform 500ms;
-
-        overflow: auto;
-
-        &[data-opened=false] {
-            transform: translateX(100%);
+        ul {
+            place-content: center;
+            place-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
     }
 
-    #toggling-button-displayer {
-
-        button {
-            padding: 0;
-
-            display: flex;
-            flex-direction: column;
-            place-content: center;
-            place-items: center;
-
-            background-color: transparent;
-            border: none;
-
-            svg {
-                width: 100%;
-            }
-        }
-
-        #navigation-bar-button {
-            $size: 3rem;
-
-            width: $size;
-            height: $size;
-        }
+    button {
+        background-color: transparent;
+        height: min-content;
+        place-self: center;
     }
 }

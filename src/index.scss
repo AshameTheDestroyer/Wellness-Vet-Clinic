@@ -1,5 +1,7 @@
 $first-screen-width: 910px;
-$second-screen-width: 480px;
+$second-screen-width: 800px;
+$third-screen-width: 600px;
+$fourth-screen-width: 450px;
 
 @font-face {
     font-family: CascadiaCode;
@@ -10,16 +12,16 @@ $second-screen-width: 480px;
 }
 
 html {
-    --header-height: 7rem;
+    --header-height: 12rem;
 
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
 }
 
 :root {
-    --main-colour: #A9B388;
-    --main-lighter-colour: #C5CFA1;
-    --main-darker-colour: #5F6F52;
+    --main-colour: #9B674F;
+    --main-lighter-colour: #ba866d;
+    --main-darker-colour: #613e2e;
 
     --secondary-colour: #8ADAB2;
     --ternary-colour: #DF826C;
@@ -31,6 +33,7 @@ html {
     --background-darker-colour: #B99470;
 
     --half-transparent: #0000007c;
+    --3quarter-transparent: #000000bf;
 
     --best-bezier-curve: cubic-bezier(0.15, 0.95, 0.3, 1.5);
 
@@ -67,7 +70,7 @@ button {
     font-size: inherit;
 
     color: inherit;
-    background-color: var(--main-colour);
+    background-color: var(--3quarter-transparent);
 
     border: none;
     outline: none;
@@ -153,6 +156,8 @@ ul {
 svg {
     fill: var(--fore-colour);
     stroke: var(--fore-colour);
+
+    transition: fill 500ms, stroke 500ms;
 }
 
 .button-displayer {

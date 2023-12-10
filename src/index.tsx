@@ -51,8 +51,12 @@ function Index(): React.ReactElement {
         ToggleDarkTheme,
     });
 
+    let _header: HTMLElement;
+    const getHeader = () => _header ?? (_header = document.getElementById("header"));
+
     useEffect(() => {
         document.body.classList.toggle("dark-themed");
+        window.addEventListener("scroll", DetectStickingHeader);
     }, []);
 
     function ToggleDarkTheme(): void {
@@ -68,6 +72,16 @@ function Index(): React.ReactElement {
         }
     }
 
+    function DetectStickingHeader(): void {
+        const
+            hasScrolledToTop: boolean = window.scrollY == 0,
+            stickingHeaderClass = "sticking-header",
+            header = getHeader();
+
+        if (hasScrolledToTop) { header?.classList.remove(stickingHeaderClass); }
+        else { header?.classList.add(stickingHeaderClass); }
+    }
+
     return (
         <HashRouter basename="/">
             <MainContext.Provider value={state}>
@@ -77,19 +91,6 @@ function Index(): React.ReactElement {
                         <Route path="/About" element={<AboutPage />} />
                         <Route path="/Services" element={<ServicesPage />} />
                         <Route path="/ContactUs" element={<ContactUsPage />} />
-                        <Route path="/Pets" element={<ContactUsPage />} />
-
-                        <Route path="/Appointments" element={<ContactUsPage />}>
-                            <Route path="/Appointments/Booking" element={<ContactUsPage />}>
-                                <Route path="/Appointments/Booking/a" element={<ContactUsPage />} />
-                                <Route path="/Appointments/Booking/b" element={<ContactUsPage />} />
-                                <Route path="/Appointments/Booking/c" element={<ContactUsPage />} />
-                            </Route>
-                            <Route index element={<ContactUsPage />} />
-                        </Route>
-
-                        <Route path="/Doctors" element={<ContactUsPage />} />
-                        <Route path="/Reports" element={<ContactUsPage />} />
                     </Route>
 
                     <Route path="/Landing" element={<LandingPage />} />

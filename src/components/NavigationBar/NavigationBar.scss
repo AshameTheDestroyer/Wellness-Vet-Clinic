@@ -1,89 +1,49 @@
 .navigation-bar {
-    background-color: var(--main-lighter-colour);
+    --highlight-colour: gray;
 
     ul {
         gap: 0;
 
         padding: 0;
         background-color: inherit;
-
-        overflow: hidden;
+        flex-direction: row;
 
         li {
             list-style-type: none;
 
-            display: flex;
-            flex-direction: column;
-
             background-color: inherit;
 
             a {
-                --padding-inline: 2rem;
-                --padding-block: 1rem;
-
+                --line-scale: 0;
                 text-decoration: none;
 
                 position: relative;
 
-                flex-grow: 1;
-                display: flex;
-                place-content: center end;
-                place-items: center end;
-                gap: 1rem;
+                padding: 1rem 2rem;
 
-                padding-inline: var(--padding-inline);
-                padding-block: var(--padding-block);
+                &::after {
+                    content: "";
 
-                background-color: inherit;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 0.3rem;
 
-                transition: background-color 500ms;
+                    transform-origin: center;
+                    transform: scaleX(calc(0.75 * var(--line-scale)));
 
-                &[data-nesting-index] {
-                    --nesting-index: 1;
-                    --offset-per-nesting: 2rem;
-                    --offset-right: calc(var(--offset-per-nesting) * var(--nesting-index));
+                    background-color: var(--background-darker-colour);
 
-                    padding-right: calc(var(--padding-inline) + var(--offset-right));
+                    border-radius: 100rem;
 
-                    &::before {
-                        content: "";
-
-                        position: absolute;
-                        inset: 0;
-                        right: var(--offset-right);
-
-                        border-right: 2px solid var(--main-darker-colour);
-
-                        opacity: 0;
-
-                        transition: opacity 500ms;
-                    }
+                    transition: transform 500ms;
                 }
             }
 
             &:is([data-navigated-to=true], :hover)>a {
-                background-color: var(--main-colour);
+                --line-scale: 1;
             }
-
-            &[data-is-folded=false] ul {
-                height: 0;
-            }
-
-            svg {
-                $size: 2rem;
-
-                width: $size;
-                height: $size;
-
-                margin-right: calc(-1 * var(--padding-inline) / 2);
-            }
-        }
-    }
-
-    &:hover {
-
-        a[data-nesting-index]::before {
-            opacity: 1;
         }
     }
 }
