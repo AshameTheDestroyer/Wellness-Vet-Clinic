@@ -1,23 +1,19 @@
 .page-heading {
-    --page-heading-padding: 3rem;
-
     display: grid;
     grid-template-columns: 1fr auto;
+    place-content: center stretch;
+    place-items: center stretch;
 
     margin: calc(-1 * var(--padding));
     margin-bottom: 0;
-
-    padding: var(--page-heading-padding);
 
     color: var(--background-colour);
     background-color: var(--main-colour);
 
     h1 {
+        width: 100%;
         font-size: 4rem;
-    }
 
-    section {
-        margin: calc(-1 * var(--page-heading-padding));
-        margin-left: 0;
+        padding: 3rem 9rem;
     }
 }

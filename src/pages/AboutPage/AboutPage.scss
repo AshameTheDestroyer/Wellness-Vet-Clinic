@@ -1,17 +1,74 @@
+@use "../../index.scss";
+
 #about-page {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 
+    .page-heading {
+
+        section {
+            height: 100%;
+            width: 35vw;
+            place-self: center end;
+
+            display: flex;
+            flex-direction: column;
+            place-content: center end;
+            place-items: center end;
+
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                object-fit: contain;
+
+                margin: -1rem;
+
+                opacity: 0.35;
+            }
+        }
+
+        @media (max-width: index.$third-screen-width) {
+            grid-template-columns: 1fr;
+            place-content: center;
+            place-items: center;
+
+            h1 {
+                display: flex;
+                place-content: center;
+                place-items: center;
+            }
+
+            section {
+                display: none;
+            }
+        }
+    }
+
     &>main {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        place-content: center;
-        place-items: center;
+        place-content: stretch center;
+        place-items: stretch center;
+
+        figure {
+            display: flex;
+            place-content: center;
+            place-items: center;
+
+            img {
+                width: 150%;
+                max-width: 80rem;
+                object-fit: contain;
+            }
+        }
 
         &>main {
             display: flex;
             flex-direction: column;
+            place-content: start center;
+            place-items: start center;
             gap: 3rem;
 
             p {
@@ -47,6 +104,19 @@
                 background-color: var(--main-lighter-colour);
 
                 border-radius: 1rem;
+            }
+        }
+    }
+
+    @media (max-width: index.$second-screen-width) {
+
+        &>main {
+            display: flex;
+            place-content: center;
+            place-items: center;
+
+            &>figure {
+                display: none;
             }
         }
     }

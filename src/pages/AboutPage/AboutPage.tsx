@@ -1,14 +1,23 @@
 import React from "react";
 
-import "./AboutPage.scss";
 import PageHeading from "../../layouts/components/PageHeading/PageHeading";
+
+import "./AboutPage.scss";
+
+import dog_cat_image1 from "../../assets/images/transparent/dog_cat2.png";
+import dog_cat_image2 from "../../assets/images/transparent/dog_cat3.png";
 
 export default function AboutPage(): React.ReactElement {
     return (
         <main id="about-page">
-            <PageHeading title="About us" />
+            <PageHeading title="About us">
+                <img src={dog_cat_image1} alt="A dog and a cat sitting." />
+            </PageHeading>
+
             <main>
-                <figure></figure>
+                <figure>
+                    <img src={dog_cat_image2} alt="A dog and a cat looking forward." />
+                </figure>
                 <main>
                     <h2>About <strong>Wellness Veterinary Clinic</strong></h2>
                     <p>
