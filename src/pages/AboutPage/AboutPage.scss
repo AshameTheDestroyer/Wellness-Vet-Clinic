@@ -71,6 +71,10 @@
             place-items: start center;
             gap: 3rem;
 
+            h2 strong {
+                text-transform: uppercase;
+            }
+
             p {
                 color: var(--main-colour);
             }
