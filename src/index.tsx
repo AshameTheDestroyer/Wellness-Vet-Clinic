@@ -1,12 +1,12 @@
 import ReactDOM from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router-dom";
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, Fragment } from "react";
 
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
-import ServicesPage from "./pages/ServicesPage/ServicesPage";
-import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
+import AppointmentPage from "./pages/AppointmentPage/AppointmentPage";
+import AccessoriesPage from "./pages/AccessoriesPage/AccessoriesPage";
 import MainPageLayout from "./layouts/MainPageLayout/MainPageLayout";
 
 import "./utils/extensions/ToClassName";
@@ -15,6 +15,7 @@ import "./index.scss";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PAGE_ANCHORS from "./constants/PageAnchors";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import BlogPage from "./pages/BlogPage/BlogPage";
 
 type MainStateProps = {
     isDarkThemed: boolean;
@@ -88,9 +89,10 @@ function Index(): React.ReactElement {
                 <Routes>
                     <Route path="/" element={<MainPageLayout />}>
                         <Route index element={<HomePage />} />
+                        <Route path="/Blog" element={<BlogPage />} />
                         <Route path="/About" element={<AboutPage />} />
-                        <Route path="/Services" element={<ServicesPage />} />
-                        <Route path="/ContactUs" element={<ContactUsPage />} />
+                        <Route path="/Appointment" element={<AppointmentPage />} />
+                        <Route path="/Accessories" element={<AccessoriesPage />} />
                     </Route>
 
                     <Route path="/Landing" element={<LandingPage />} />
