@@ -1,0 +1,53 @@
+#about-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &>main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-content: center;
+        place-items: center;
+
+        &>main {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+
+            p {
+                color: var(--main-colour);
+            }
+        }
+    }
+
+    #service-displayer {
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        place-items: center;
+        gap: 3rem;
+
+        &>main {
+            display: grid;
+            place-self: stretch;
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+            place-content: center;
+            place-items: center;
+            gap: 3rem;
+
+            .service-card {
+                text-align: center;
+
+                display: flex;
+                place-content: center;
+                place-items: center;
+
+                padding: 2rem;
+
+                background-color: var(--main-lighter-colour);
+
+                border-radius: 1rem;
+            }
+        }
+    }
+}

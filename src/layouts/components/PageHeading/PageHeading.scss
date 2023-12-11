@@ -1,0 +1,23 @@
+.page-heading {
+    --page-heading-padding: 3rem;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    margin: calc(-1 * var(--padding));
+    margin-bottom: 0;
+
+    padding: var(--page-heading-padding);
+
+    color: var(--background-colour);
+    background-color: var(--main-colour);
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    section {
+        margin: calc(-1 * var(--page-heading-padding));
+        margin-left: 0;
+    }
+}
