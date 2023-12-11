@@ -83,7 +83,8 @@
 
             &>figure {
                 position: relative;
-                top: 4rem;
+
+                bottom: calc(-1 * var(--section-padding-block));
 
                 display: flex;
                 place-content: end;

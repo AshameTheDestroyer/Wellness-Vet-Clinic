@@ -1,16 +1,16 @@
 @use "../../../index.scss";
 
 #header {
-    --padding: 1rem;
+    --padding: 1.5rem;
 
     position: sticky;
     top: 0;
     height: calc(var(--header-height) - var(--padding) * 2);
 
-    display: flex;
-    flex-direction: row;
-    place-content: center space-between;
-    place-items: center space-between;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    place-content: center;
+    place-items: center;
 
     padding: var(--padding) calc(var(--padding) * 2);
 
@@ -23,24 +23,128 @@
     }
 
     #logo {
-        place-self: center;
+        place-self: start;
     }
 
-    .navigation-bar {
-        display: flex;
+    #hamburger-button {
+        display: none;
+    }
 
-        ul {
-            place-content: center;
-            place-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+    #navigation-background {
+        display: none;
+    }
+
+    #navigation-container {
+        display: flex;
+        place-content: center space-between;
+        place-items: center space-between;
+        place-self: stretch;
+
+        .navigation-bar {
+            display: flex;
+
+            ul {
+                place-content: center;
+                place-items: center;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+        }
+
+        #sign-in-button {
+            background-color: transparent;
+            height: min-content;
+            place-self: center;
         }
     }
 
-    button {
-        background-color: transparent;
-        height: min-content;
-        place-self: center;
+    @media (max-width: index.$second-screen-width) {
+        --navigation-z-index: 10;
+
+        #hamburger-button {
+            width: 5rem;
+            aspect-ratio: 1;
+            padding: 0.5rem;
+
+            display: flex;
+            place-self: center end;
+            place-content: center;
+            place-items: center;
+
+            background-color: transparent;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        #navigation-container {
+            --padding: 2rem;
+
+            position: fixed;
+            inset: 0;
+            left: auto;
+            height: calc(100vh - var(--padding) * 2);
+            height: calc(100dvh - var(--padding) * 2);
+
+            display: flex;
+            flex-direction: column-reverse;
+            place-content: center start;
+            place-items: center start;
+            gap: 2rem;
+
+            padding: calc(var(--padding) * 2) var(--padding);
+
+            color: var(--background-colour);
+            background-color: var(--main-darker-colour);
+
+            transition: transform 500ms;
+
+            z-index: var(--navigation-z-index);
+
+            &[data-is-open=false] {
+                transform: translateX(100%);
+            }
+
+            .navigation-bar {
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    place-content: end center;
+                    place-items: end center;
+
+                    li {
+                        width: 100%;
+
+                        display: flex;
+
+                        a {
+                            flex-grow: 1;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        #navigation-background {
+            display: block;
+
+            position: absolute;
+            inset: 0;
+            height: 100vh;
+            height: 100dvh;
+
+            background-color: var(--main-transparent-colour);
+
+            z-index: var(--navigation-z-index);
+
+            &[data-is-visible=false] {
+                display: none;
+            }
+        }
     }
 }
 
@@ -57,10 +161,11 @@
     padding: var(--padding);
 
     background-color: var(--background-colour);
+    box-shadow: 1rem 1rem 0.5rem var(--half-transparent);
 
     z-index: 20;
 
-    #signing-modal-button {
+    #signing-modal-close-button {
         position: absolute;
         top: calc(var(--padding) / 2);
         right: calc(var(--padding) / 2);
@@ -118,6 +223,7 @@
         display: flex;
         place-content: center end;
         place-items: center end;
+        place-self: end;
 
         margin-bottom: calc(-1 * var(--padding));
 
@@ -179,5 +285,5 @@
 }
 
 #signing-modal-background {
-    background-color: #ba856d81;
+    background-color: var(--main-transparent-colour);
 }

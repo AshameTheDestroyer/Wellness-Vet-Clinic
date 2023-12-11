@@ -22,6 +22,7 @@ html {
     --main-colour: #9B674F;
     --main-lighter-colour: #ba866d;
     --main-darker-colour: #613e2e;
+    --main-transparent-colour: #ba856d81;
 
     --secondary-colour: #8ADAB2;
     --ternary-colour: #DF826C;
@@ -53,6 +54,8 @@ body {
     background-color: var(--background-colour);
 
     transition: color 500ms, background-color 500ms;
+
+    overflow-x: hidden;
 
     &>#root>main {
         --padding: 4rem;
