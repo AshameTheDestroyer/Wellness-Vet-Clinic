@@ -8,40 +8,11 @@
     .page-heading {
 
         section {
-            height: 100%;
-            width: 35vw;
-            place-self: center end;
-
-            display: flex;
-            flex-direction: column;
-            place-content: center end;
-            place-items: center end;
-
-            overflow: hidden;
 
             img {
-                width: 100%;
-                object-fit: contain;
-
-                margin: -1rem;
+                object-position: 100% 100%;
 
                 opacity: 0.35;
-            }
-        }
-
-        @media (max-width: index.$third-screen-width) {
-            grid-template-columns: 1fr;
-            place-content: center;
-            place-items: center;
-
-            h1 {
-                display: flex;
-                place-content: center;
-                place-items: center;
-            }
-
-            section {
-                display: none;
             }
         }
     }

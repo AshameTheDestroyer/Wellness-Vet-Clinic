@@ -1,0 +1,13 @@
+.tab-container {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    gap: 4rem;
+
+    padding: 2rem;
+
+    .button-displayer {
+        flex-wrap: wrap;
+    }
+}

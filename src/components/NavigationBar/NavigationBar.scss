@@ -31,13 +31,13 @@
                     height: 0.3rem;
 
                     transform-origin: center;
-                    transform: scaleX(calc(0.75 * var(--line-scale)));
+                    transform: scaleX(calc(0.5 * var(--line-scale)));
 
                     background-color: var(--background-darker-colour);
 
                     border-radius: 100rem;
 
-                    transition: transform 500ms;
+                    transition: transform 350ms 0ms cubic-bezier(.51, -0.53, .67, 1.52);
                 }
             }
 
