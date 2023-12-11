@@ -46,19 +46,31 @@ const
 ReactDOM.createRoot(ROOT_DIV_ELEMENT ?? document.body).render(<Index />);
 
 function Index(): React.ReactElement {
+    const [header, setHeader] = useState<HTMLElement>(null);
     const [state, setState] = useState<MainStateProps>({
         isDarkThemed: false,
 
         ToggleDarkTheme,
     });
 
-    let _header: HTMLElement;
-    const getHeader = () => _header ?? (_header = document.getElementById("header"));
-
     useEffect(() => {
         document.body.classList.toggle("dark-themed");
-        window.addEventListener("scroll", DetectStickingHeader);
+
+        setHeader(document.getElementById("header"));
     }, []);
+
+    useEffect(() => {
+        function DetectStickingHeader(): void {
+            const
+                hasScrolledToTop: boolean = window.scrollY == 0,
+                stickingHeaderClass = "sticking-header";
+
+            if (hasScrolledToTop) { header?.classList.remove(stickingHeaderClass); }
+            else { header?.classList.add(stickingHeaderClass); }
+        }
+
+        window.addEventListener("scroll", DetectStickingHeader);
+    }, [header?.classList]);
 
     function ToggleDarkTheme(): void {
         state.isDarkThemed = !state.isDarkThemed;
@@ -71,16 +83,6 @@ function Index(): React.ReactElement {
         for (const [key, value] of Object.entries(style)) {
             ROOT.style.setProperty(key, value);
         }
-    }
-
-    function DetectStickingHeader(): void {
-        const
-            hasScrolledToTop: boolean = window.scrollY == 0,
-            stickingHeaderClass = "sticking-header",
-            header = getHeader();
-
-        if (hasScrolledToTop) { header?.classList.remove(stickingHeaderClass); }
-        else { header?.classList.add(stickingHeaderClass); }
     }
 
     return (
