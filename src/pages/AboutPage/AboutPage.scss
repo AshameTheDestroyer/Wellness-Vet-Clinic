@@ -79,6 +79,12 @@
                 background-color: var(--main-lighter-colour);
 
                 border-radius: 1rem;
+
+                transition: transform 500ms;
+
+                &:is(:hover, :focus-within) {
+                    transform: scale(1.1);
+                }
             }
         }
     }
