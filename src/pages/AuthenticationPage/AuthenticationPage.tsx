@@ -3,12 +3,12 @@ import { Link, useSearchParams } from "react-router-dom";
 
 import "./AuthenticationPage.scss";
 
-import dog_cat_wallpaper from "../../assets/images/wallpapers/dog_cat.jpg";
-import dog_cat_wallpaper_blurred from "../../assets/images/wallpapers/dog_cat.blurred.jpg";
-import CustomInput from "../../utils/components/CustomInput/CustomInput";
+import Logo from "../../layouts/components/Logo/Logo";
 import REGEX_PATTERNS from "../../utils/constants/RegexPatterns";
 import LazyImage from "../../utils/components/LazyImage/LazyImage";
-import Logo from "../../layouts/components/Logo/Logo";
+import CustomInput from "../../utils/components/CustomInput/CustomInput";
+import dog_cat_wallpaper from "../../assets/images/wallpapers/dog_cat.jpg";
+import dog_cat_wallpaper_blurred from "../../assets/images/wallpapers/dog_cat.blurred.jpg";
 
 export enum AuthenticationMethod {
     SignUp = "sign-up",

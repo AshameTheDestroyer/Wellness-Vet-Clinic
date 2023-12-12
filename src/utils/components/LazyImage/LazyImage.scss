@@ -1,23 +1,15 @@
 .lazy-image {
-    display: grid;
-    grid-template-columns: 1fr;
+    transition: opacity 500ms;
+    opacity: 1;
 
-    &>img {
-        grid-row: 1;
-        grid-column: 1;
+    &.lazy-image-hidden {
+        filter: none;
+        opacity: 0;
+    }
 
-        transition: opacity 500ms;
-        opacity: 1;
+    &.pixelated-lazy-image {
+        position: absolute;
 
-        &.lazy-image-hidden {
-            filter: none;
-            opacity: 0;
-        }
-
-        &.pixelated-lazy-image {
-            width: 100%;
-
-            filter: blur(10px);
-        }
+        filter: blur(10px);
     }
 }

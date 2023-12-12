@@ -42,8 +42,8 @@ export default function AccessoriesPage(): React.ReactElement {
                                         new Array(DOG_IMAGES.length ** 2)
                                             .fill(null)
                                             .map((_value, i) =>
-                                                <div key={i} className="card">
-                                                    <img src={DOG_IMAGES[i % DOG_IMAGES.length]} alt="A dog sitting." />
+                                                <div key={i} className="card" tabIndex={0}>
+                                                    <img src={DOG_IMAGES[~~(Math.random() * DOG_IMAGES.length)]} alt="A dog sitting." />
                                                     <div>
                                                         <h4>Name</h4>
                                                         <p>Description</p>

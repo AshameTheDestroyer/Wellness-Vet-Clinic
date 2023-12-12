@@ -62,7 +62,7 @@
         &>main {
             display: grid;
             place-self: stretch;
-            grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 15rem));
             place-content: center;
             place-items: center;
             gap: 3rem;

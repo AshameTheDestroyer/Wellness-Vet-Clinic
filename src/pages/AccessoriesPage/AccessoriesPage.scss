@@ -36,10 +36,16 @@
     }
 
     &>main {
+        $box-shadow: 0.1rem 0.1rem 0.5rem var(--quarter-transparent),
+            -0.1rem 0.1rem 0.5rem var(--quarter-transparent),
+            0.1rem -0.1rem 0.5rem var(--quarter-transparent),
+            -0.1rem -0.1rem 0.5rem var(--quarter-transparent),
+        ;
+
         display: flex;
         flex-direction: column;
-        place-content: center;
-        place-items: center;
+        place-content: center stretch;
+        place-items: center stretch;
 
         padding: 4rem;
 
@@ -47,18 +53,13 @@
 
         border-radius: 4rem;
 
-        box-shadow:
-            0.1rem 0.1rem 0.5rem var(--half-transparent),
-            -0.1rem 0.1rem 0.5rem var(--half-transparent),
-            0.1rem -0.1rem 0.5rem var(--half-transparent),
-            -0.1rem -0.1rem 0.5rem var(--half-transparent),
-        ;
+        box-shadow: $box-shadow;
 
         .tab-container>section {
             display: flex;
             flex-direction: column;
-            place-content: center;
-            place-items: center;
+            place-content: center stretch;
+            place-items: center stretch;
             gap: 4rem;
 
             &>section {
@@ -87,14 +88,34 @@
                     img {
                         width: 100%;
 
+                        border-radius: 1rem;
+
+                        transition: box-shadow 250ms;
+
+                        cursor: pointer;
+
                         &[data-two-rows] {
                             grid-row: span 2;
                         }
+
+                        &:is(:hover, :focus-within) {
+                            outline: none;
+                            box-shadow: $box-shadow;
+                        }
+                    }
+
+                    @media (max-width: index.$third-screen-width) {
+                        display: flex;
+                        flex-direction: column;
+                        place-content: center;
+                        place-items: center;
                     }
                 }
             }
 
             &>main {
+                width: 100%;
+
                 display: flex;
                 flex-direction: column;
                 place-content: center;
@@ -102,31 +123,50 @@
                 gap: 3rem;
 
                 &>section {
+                    width: 100%;
+
                     display: grid;
-                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
                     place-content: center;
                     place-items: center;
                     gap: 2rem;
 
                     .card {
+                        $border-radius: 1rem;
+
                         width: 100%;
                         max-width: 30rem;
 
-                        display: flex;
-                        flex-direction: column;
-                        gap: 2rem;
+                        border-radius: $border-radius;
+
+                        overflow: hidden;
+
+                        transition: transform 250ms, box-shadow 250ms;
+
+                        cursor: pointer;
+
+                        &:is(:hover, :focus-within) {
+                            outline: none;
+                            box-shadow: $box-shadow;
+                        }
+
+                        &:hover {
+                            transform: scale(0.95);
+                        }
 
                         img {
                             width: 100%;
                             height: 100%;
 
-                            border-radius: 1rem;
+                            border-radius: $border-radius;
                         }
 
                         &>div {
                             display: flex;
                             flex-direction: column;
                             gap: 2rem;
+
+                            padding: 2rem;
 
                             h4 {
                                 font-size: 2.5rem;
@@ -136,6 +176,28 @@
                                 color: var(--main-colour);
                             }
                         }
+                    }
+                }
+            }
+
+            img {
+                animation-name: image-entrance-animation;
+                animation-duration: 250ms;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                animation-direction: normal;
+                animation-timing-function: ease-out;
+
+                @keyframes image-entrance-animation {
+
+                    0% {
+                        transform: scale(0);
+                        opacity: 0;
+                    }
+
+                    100% {
+                        transform: scale(1);
+                        opacity: 1;
                     }
                 }
             }

@@ -34,7 +34,7 @@ export default function AboutPage(): React.ReactElement {
                     new Array(4)
                         .fill(null)
                         .map((_value, i) =>
-                            <div className="service-card" key={i}>Service {i + 1}</div>
+                            <button className="service-card" key={i}>Service {i + 1}</button>
                         )
                 } </main>
             </section>
