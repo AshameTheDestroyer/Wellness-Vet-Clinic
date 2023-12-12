@@ -11,6 +11,8 @@ $fourth-screen-width: 450px;
         url("https://fonts.cdnfonts.com/s/29131/Cascadia.woff") format("woff");
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Paprika&family=Radio+Canada:wght@400;700&display=swap');
+
 html {
     --header-height: 12rem;
 
@@ -44,7 +46,7 @@ html {
 
 body {
     font-size: 1.6rem;
-    font-family: "Cascadia Code", CascadiaCode, Consolas, Arial;
+    font-family: "Radio Canada", "Cascadia Code", CascadiaCode, Consolas, Arial;
 
     min-height: 100vh;
     min-height: 100dvh;
