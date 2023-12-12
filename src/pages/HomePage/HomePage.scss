@@ -54,11 +54,17 @@
             bottom: 0;
             right: 0;
 
+            display: flex;
+            place-content: end;
+            place-items: end;
+
+            max-width: 80vw;
             height: 100%;
+            max-height: 60rem;
 
             img {
-                width: 100%;
                 height: 100%;
+                width: 100%;
                 object-fit: contain;
             }
         }
@@ -83,7 +89,7 @@
 
             &>figure {
                 position: relative;
-
+                max-height: none;
                 bottom: calc(-1 * var(--section-padding-block));
 
                 display: flex;
