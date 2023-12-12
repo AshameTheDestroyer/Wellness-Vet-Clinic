@@ -1,0 +1,167 @@
+#blog-page {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+
+    &>main {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+
+        &>form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+
+            .custom-input {
+                width: 100%;
+            }
+
+            button {
+                padding: 1rem 4rem;
+
+                color: var(--background-colour);
+                background-color: var(--main-colour);
+            }
+        }
+
+        #blog-displayer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 45rem));
+            place-content: center;
+            place-items: center;
+            gap: 4rem;
+
+            .blog-card {
+                display: flex;
+                flex-direction: column;
+
+                border-radius: 1rem;
+
+                overflow: hidden;
+
+                cursor: pointer;
+
+                transition: box-shadow 250ms, transform 250ms;
+
+                img {
+                    width: 100%;
+                    flex-grow: 1;
+                    aspect-ratio: 16 / 12;
+
+                    background-color: green;
+                }
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+
+                    padding: 2rem;
+
+                    color: var(--background-colour);
+                    background-color: var(--main-colour);
+
+                    h3 {
+                        font-size: 2.5rem;
+                    }
+
+                    p {
+                        display: -webkit-box;
+
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 3;
+
+                        overflow: hidden;
+                    }
+                }
+
+                &:is(:hover, :focus-within) {
+                    transform: scale(0.98);
+
+                    box-shadow:
+                        0.1rem 0.1rem 0.5rem var(--quarter-transparent),
+                        -0.1rem 0.1rem 0.5rem var(--quarter-transparent),
+                        0.1rem -0.1rem 0.5rem var(--quarter-transparent),
+                        -0.1rem -0.1rem 0.5rem var(--quarter-transparent),
+                    ;
+                }
+
+                animation-name: image-entrance-animation;
+                animation-duration: 250ms;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                animation-direction: normal;
+                animation-timing-function: ease-out;
+
+                @keyframes image-entrance-animation {
+
+                    0% {
+                        transform: scale(0);
+                        opacity: 0;
+                    }
+
+                    100% {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        #pagination-button-displayer {
+            display: flex;
+            place-content: center;
+            place-items: center;
+
+            color: var(--main-colour);
+
+            .slider {
+                max-width: 50rem;
+            }
+
+            &>div {
+                display: flex;
+            }
+
+            button {
+                $size: 4rem;
+
+                width: $size;
+                height: $size;
+                padding: 0 !important;
+                aspect-ratio: 1;
+
+                display: flex;
+                place-content: center;
+                place-items: center;
+
+                border-radius: 100%;
+
+                &.pagination-step-button {
+                    font-size: 2rem;
+                    font-weight: bold;
+
+                    background-color: transparent;
+
+                    &[data-is-hidden=true] {
+                        visibility: hidden;
+                    }
+                }
+
+                &.pagination-button {
+                    background-color: var(--background-colour);
+
+                    border: 2px solid var(--main-colour);
+
+                    transition: background-color 500ms, color 500ms;
+
+                    &:is(:hover, :focus-within, [data-is-selected=true]) {
+                        color: var(--background-colour);
+                        background-color: var(--main-colour);
+                    }
+                }
+            }
+        }
+    }
+}

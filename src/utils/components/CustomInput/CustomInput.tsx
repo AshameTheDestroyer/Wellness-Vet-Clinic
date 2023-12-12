@@ -13,12 +13,12 @@ type CustomInputProps = ChildlessComponentProps & {
     value?: string;
     title?: string;
     isReadOnly?: boolean;
-    isRequired?: boolean;
+    isOptional?: boolean;
     placeholder?: string;
     minimumLength?: number;
     maximumLength?: number;
     isTransparent?: boolean;
-    isPlaceholderAlwaysShown?: boolean;
+    doesHidePlaceholder?: boolean;
 
     events?: ComponentEventProps<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>;
 } & EitherOrNeither<
@@ -36,7 +36,7 @@ export default function CustomInput(props: CustomInputProps): React.ReactElement
         <div className={[
             "custom-input-container",
             props.isTransparent && "transparent",
-            (props.isPlaceholderAlwaysShown != false) && "placeholder-always-shown",
+            (!props.doesHidePlaceholder) && "placeholder-always-shown",
         ].toClassName()}>
             <input
                 id={id}
@@ -48,15 +48,15 @@ export default function CustomInput(props: CustomInputProps): React.ReactElement
                 type={props.type}
                 value={props.value}
                 title={props.title}
-                placeholder=" "
                 pattern={props.pattern}
                 name={props.name}
                 min={props.minimumValue}
                 max={props.maximumValue}
                 readOnly={props.isReadOnly}
+                required={!props.isOptional}
                 minLength={props.minimumLength}
                 maxLength={props.maximumLength}
-                required={props.isRequired ?? true}
+                placeholder={props.doesHidePlaceholder ? props.placeholder : " "}
 
                 onBlur={e => {
                     if (props.type == "number" && e.currentTarget.value.length == 0) { e.currentTarget.value = 0..toString(); }
@@ -69,7 +69,7 @@ export default function CustomInput(props: CustomInputProps): React.ReactElement
 
             <label htmlFor={id}>
                 {props.placeholder}
-                {(props.isRequired ?? true) && <sup>*</sup>}
+                {(!props.isOptional) && <sup>*</sup>}
             </label>
         </div>
     );

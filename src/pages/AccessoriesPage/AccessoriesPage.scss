@@ -131,16 +131,21 @@
                         width: 100%;
 
                         display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+                        grid-template-columns: repeat(auto-fit, minmax(12rem, 20rem));
                         place-content: center;
                         place-items: center;
                         gap: 2rem;
+
+                        padding: 1rem;
 
                         .card {
                             $border-radius: 1rem;
 
                             width: 100%;
                             max-width: 30rem;
+
+                            display: flex;
+                            flex-direction: column;
 
                             border-radius: $border-radius;
 
@@ -152,16 +157,16 @@
 
                             &:is(:hover, :focus-within) {
                                 outline: none;
-                                box-shadow: $box-shadow;
-                            }
-
-                            &:hover {
                                 transform: scale(0.95);
+                                box-shadow: $box-shadow;
                             }
 
                             img {
                                 width: 100%;
                                 height: 100%;
+                                aspect-ratio: 1;
+
+                                background-color: green;
 
                                 border-radius: $border-radius;
                             }
@@ -185,7 +190,8 @@
                     }
                 }
 
-                img {
+                &>section img,
+                .card {
                     animation-name: image-entrance-animation;
                     animation-duration: 250ms;
                     animation-iteration-count: 1;

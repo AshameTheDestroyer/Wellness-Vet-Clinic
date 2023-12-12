@@ -81,8 +81,7 @@
     }
 
     label {
-        position: relative;
-        left: var(--padding);
+        display: none;
 
         white-space: nowrap;
         overflow: hidden;

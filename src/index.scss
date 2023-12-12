@@ -80,19 +80,17 @@ button {
 
     border: none;
     outline: none;
+    border-radius: 1rem;
 }
 
 input {
     padding: 1rem 1.5rem;
 
-    border-radius: 100rem;
     border: 2px solid var(--fore-colour);
 }
 
 button {
     padding: 1.25rem 2rem;
-
-    border-radius: 1rem;
 
     cursor: pointer;
 

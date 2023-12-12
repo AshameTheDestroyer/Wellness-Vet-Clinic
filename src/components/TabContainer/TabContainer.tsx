@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { ChildlessComponentProps } from "../../utils/types/ComponentProps";
 
 import "./TabContainer.scss";
+import Slider from "../Slider/Slider";
 
 export type Tab = {
     title: string;
@@ -24,7 +25,7 @@ export default function TabContainer(props: TabContainerProps): React.ReactEleme
                 props.className,
             ].toClassName()}
         >
-            <div className="button-displayer"> {
+            <Slider> {
                 props.tabs.map((tab, i) =>
                     <button
                         key={i}
@@ -36,7 +37,7 @@ export default function TabContainer(props: TabContainerProps): React.ReactEleme
                         {tab.title}
                     </button>
                 )
-            } </div>
+            } </Slider>
 
             {props.tabs[selectedTabIndex].element}
         </section>

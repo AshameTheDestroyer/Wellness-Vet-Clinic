@@ -1,0 +1,40 @@
+.slider {
+    --padding-inline: 4rem;
+
+    display: flex;
+    gap: 2rem;
+
+    padding-block: 1rem;
+
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    scroll-snap-type: x mandatory;
+
+    mask-image: linear-gradient(90deg,
+            transparent 0%,
+            black var(--padding-inline),
+            black calc(100% - var(--padding-inline)),
+            transparent 100%);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &>* {
+        white-space: nowrap;
+        scroll-snap-align: center;
+
+        &:first-child {
+            margin-inline-start: var(--padding-inline);
+        }
+
+        &:last-child {
+            margin-inline-end: var(--padding-inline);
+        }
+    }
+
+}
