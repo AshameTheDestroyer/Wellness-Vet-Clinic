@@ -1,11 +1,13 @@
 #footer {
-    display: flex;
-    flex-direction: row;
-    place-content: center space-between;
-    place-items: center space-between;
-    flex-wrap: wrap;
+    --padding: 3rem;
 
-    padding: 3rem;
+    display: flex;
+    place-content: start space-between;
+    place-items: start space-between;
+    flex-wrap: wrap;
+    gap: 3rem;
+
+    padding: var(--padding);
 
     color: var(--background-colour);
     background-color: var(--main-colour);
@@ -18,13 +20,31 @@
         place-content: start center;
         place-items: start center;
         gap: 2rem;
+        height: 100%;
 
         .navigation-bar ul {
             flex-direction: column;
-            gap: 1.5rem;
 
-            li a::after {
-                content: none;
+            li {
+                padding: 1rem 2rem;
+                display: flex;
+                flex-direction: column;
+
+                a {
+                    margin: -1rem -2rem;
+
+                    border-radius: 1rem;
+
+                    transition: background-color 500ms;
+
+                    &::after {
+                        content: none;
+                    }
+
+                    &:is(:hover, :focus-within) {
+                        background-color: var(--main-lighter-colour);
+                    }
+                }
             }
         }
     }
@@ -40,5 +60,14 @@
             fill: var(--background-colour);
             stroke: var(--background-colour);
         }
+    }
+
+    #copyright {
+        width: 100%;
+
+        flex-grow: 1;
+
+        margin-left: calc(-1 * var(--padding) / 2);
+        margin-bottom: calc(-1 * var(--padding) / 2);
     }
 }

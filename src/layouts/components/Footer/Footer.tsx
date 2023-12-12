@@ -15,7 +15,6 @@ export default function Footer(): React.ReactElement {
         <footer id="footer">
             <section>
                 <Logo />
-                <p>Copyright © 2023</p>
             </section>
 
             <section>
@@ -32,6 +31,8 @@ export default function Footer(): React.ReactElement {
 
                 <SocialMediaButtonDisplayer />
             </section>
+
+            <p id="copyright">Copyright © 2023</p>
         </footer>
     );
 }
