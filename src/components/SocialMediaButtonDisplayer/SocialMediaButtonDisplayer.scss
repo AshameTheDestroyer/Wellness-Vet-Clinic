@@ -21,9 +21,22 @@
         background-color: var(--background-colour);
         border-radius: 100%;
 
+        transition: background-color 500ms, transform 500ms;
+
         svg {
             width: 100%;
             height: 100%;
+        }
+
+        &:is(:hover, :focus-within) {
+            transform: scale(1.2);
+
+            background-color: var(--fore-colour);
+
+            svg {
+                fill: var(--background-colour);
+                stroke: var(--background-colour);
+            }
         }
     }
 }
