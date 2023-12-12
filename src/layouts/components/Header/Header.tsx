@@ -38,6 +38,13 @@ export default function Header(): React.ReactElement {
 
                 data-is-open={isNavigationContainerOpen}
             >
+                <button
+                    id="navigation-container-close-button"
+
+                    onClick={_e => setIsNavigationContainerOpen(false)}
+                >
+                    <CrossIcon />
+                </button>
                 <NavigationBar anchors={PAGE_ANCHORS} />
                 <button
                     id="sign-in-button"

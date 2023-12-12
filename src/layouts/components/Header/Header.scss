@@ -8,7 +8,7 @@
     height: calc(var(--header-height) - var(--padding) * 2);
 
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: auto 1fr;
     place-content: center;
     place-items: center;
 
@@ -42,13 +42,18 @@
 
         .navigation-bar {
             display: flex;
+            flex-grow: 1;
 
             ul {
+                flex-grow: 1;
                 place-content: center;
                 place-items: center;
-                gap: 1.5rem;
                 flex-wrap: wrap;
             }
+        }
+
+        #navigation-container-close-button {
+            display: none;
         }
 
         #sign-in-button {
@@ -64,12 +69,13 @@
         #hamburger-button {
             width: 5rem;
             aspect-ratio: 1;
-            padding: 0.5rem;
 
             display: flex;
             place-self: center end;
             place-content: center;
             place-items: center;
+
+            padding: 0.5rem;
 
             background-color: transparent;
 
@@ -94,7 +100,7 @@
             place-items: center start;
             gap: 2rem;
 
-            padding: calc(var(--padding) * 2) var(--padding);
+            padding: calc(var(--padding) * 3) var(--padding);
 
             color: var(--background-colour);
             background-color: var(--main-darker-colour);
@@ -107,7 +113,29 @@
                 transform: translateX(100%);
             }
 
+            #navigation-container-close-button {
+                position: absolute;
+                top: var(--padding);
+                right: var(--padding);
+
+                aspect-ratio: 1;
+
+                display: flex;
+                place-content: center;
+                place-items: center;
+
+                padding: 0;
+
+                background-color: transparent;
+
+                svg {
+                    fill: var(--background-colour);
+                    stroke: var(--background-colour);
+                }
+            }
+
             .navigation-bar {
+                flex-grow: 0;
 
                 ul {
                     display: flex;
