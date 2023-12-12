@@ -24,8 +24,8 @@ export default function AccessoriesPage(): React.ReactElement {
 
             <main>
                 <TabContainer
-                    tabs={new Array(4).fill(null).map((_value, i) => ({
-                        title: "Category " + (4 - i),
+                    tabs={new Array(20).fill(null).map((_value, i) => ({
+                        title: "Category " + (20 - i),
                         element: (
                             <section key={i}>
                                 <section>

@@ -14,7 +14,7 @@ type TabContainerProps = {
 } & ChildlessComponentProps;
 
 export default function TabContainer(props: TabContainerProps): React.ReactElement {
-    const [selectedTab, setSelectedTab] = useState<Tab>(props.tabs[0]);
+    const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0);
 
     return (
         <section
@@ -26,10 +26,19 @@ export default function TabContainer(props: TabContainerProps): React.ReactEleme
         >
             <div className="button-displayer"> {
                 props.tabs.map((tab, i) =>
-                    <button key={i} onClick={_e => setSelectedTab(tab)}>{tab.title}</button>
+                    <button
+                        key={i}
+
+                        data-is-selected={selectedTabIndex == i}
+
+                        onClick={_e => setSelectedTabIndex(i)}
+                    >
+                        {tab.title}
+                    </button>
                 )
             } </div>
-            {selectedTab.element}
+
+            {props.tabs[selectedTabIndex].element}
         </section>
     );
 }
