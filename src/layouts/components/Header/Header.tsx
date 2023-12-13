@@ -142,7 +142,6 @@ function SigningInSection(): React.ReactElement {
         <>
             <CustomInput
                 name="name"
-                isRequired
                 type="text"
                 pattern={REGEX_PATTERNS.username.value}
                 title={REGEX_PATTERNS.username.message}
@@ -151,7 +150,6 @@ function SigningInSection(): React.ReactElement {
 
             <CustomInput
                 name="password"
-                isRequired
                 type="password"
                 placeholder="Password"
             />
@@ -166,7 +164,6 @@ function SigningUpSection(): React.ReactElement {
         <>
             <CustomInput
                 name="name"
-                isRequired
                 type="text"
                 pattern={REGEX_PATTERNS.username.value}
                 title={REGEX_PATTERNS.username.message}
@@ -175,7 +172,6 @@ function SigningUpSection(): React.ReactElement {
 
             <CustomInput
                 name="email"
-                isRequired
                 type="email"
                 pattern={REGEX_PATTERNS.mail.value}
                 title={REGEX_PATTERNS.mail.message}
@@ -184,7 +180,6 @@ function SigningUpSection(): React.ReactElement {
 
             <CustomInput
                 name="password"
-                isRequired
                 type="password"
                 pattern={REGEX_PATTERNS.password.value}
                 title={REGEX_PATTERNS.password.message}
