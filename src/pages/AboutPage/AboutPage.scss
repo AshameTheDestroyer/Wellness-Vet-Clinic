@@ -53,37 +53,114 @@
     }
 
     #service-displayer {
+        max-width: min(100%, 80rem);
+        place-self: center;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+        place-content: center;
+        place-items: center;
+        gap: 4rem;
+
+        h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        p {
+            line-height: 4rem;
+
+            animation-name: paragraph-entrance-animation;
+            animation-duration: 500ms;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            animation-direction: normal;
+            animation-timing-function: ease-out;
+
+            @keyframes paragraph-entrance-animation {
+
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+            max-height: 60vh;
+            aspect-ratio: 12 / 9;
+
+            object-fit: cover;
+
+            border-radius: 1rem;
+
+            animation-name: image-entrance-animation;
+            animation-duration: 250ms;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            animation-direction: normal;
+            animation-timing-function: ease-out;
+
+            @keyframes image-entrance-animation {
+
+                0% {
+                    transform: scale(0);
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    #service-button-displayer {
         display: flex;
+        margin-top: auto;
+        place-self: stretch center;
         flex-direction: column;
         place-content: center;
         place-items: center;
         gap: 3rem;
 
-        &>main {
-            display: grid;
-            place-self: stretch;
-            grid-template-columns: repeat(auto-fit, minmax(10rem, 15rem));
-            place-content: center;
-            place-items: center;
-            gap: 3rem;
+        .slider {
+            max-width: 100%;
+            width: min-content;
 
-            .service-card {
+            button {
                 text-align: center;
 
-                display: flex;
-                place-content: center;
-                place-items: center;
-
-                padding: 2rem;
+                padding: 0;
 
                 background-color: var(--main-lighter-colour);
 
                 border-radius: 1rem;
 
-                transition: transform 500ms;
+                transition: transform 500ms, background-color 500ms;
 
-                &:is(:hover, :focus-within) {
+                &:is(:hover, :focus-within, [data-is-selected=true]) {
                     transform: scale(1.1);
+
+                    background-color: var(--main-colour);
+                }
+
+                a {
+                    text-decoration: none;
+
+                    display: block;
+
+                    padding: 2rem;
+
+                    border-radius: inherit;
                 }
             }
         }
