@@ -3,6 +3,17 @@
     flex-direction: column;
     gap: 6rem;
 
+    .page-heading {
+        overflow: visible;
+
+        section {
+
+            img {
+                transform: scale(1.5);
+            }
+        }
+    }
+
     &>main {
         display: flex;
         flex-direction: column;
@@ -47,9 +58,8 @@
                 img {
                     width: 100%;
                     flex-grow: 1;
+                    object-fit: cover;
                     aspect-ratio: 16 / 12;
-
-                    background-color: green;
                 }
 
                 div {

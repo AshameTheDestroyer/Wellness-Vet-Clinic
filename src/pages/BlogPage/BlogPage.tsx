@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
-import "./BlogPage.scss";
-import PageHeading from "../../layouts/components/PageHeading/PageHeading";
-import CustomInput from "../../utils/components/CustomInput/CustomInput";
 import Slider from "../../components/Slider/Slider";
+import CustomInput from "../../utils/components/CustomInput/CustomInput";
+import PageHeading from "../../layouts/components/PageHeading/PageHeading";
+
+import "./BlogPage.scss";
+
+import dog_image1 from "../../assets/images/transparent/dog4.png";
+import dog_image2 from "../../assets/images/wallpapers/dog4.png";
 
 const TEMPORARY_DATA: Array<{
     id: number;
@@ -16,7 +20,7 @@ const TEMPORARY_DATA: Array<{
     .map((_value, i) => ({
         id: i,
         title: `title ${i + 1}`,
-        imageSource: "",
+        imageSource: dog_image2,
         imageAlternative: "A dog looking outside of a car's window.",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta provident veritatis suscipit eligendi magni, deserunt dolore earum expedita itaque, fugit amet corporis? Suscipit qui et dolores? Ad aperiam doloremque odit!",
     }));
@@ -31,7 +35,7 @@ export default function BlogPage(): React.ReactElement {
     return (
         <main id="blog-page">
             <PageHeading title="Blog">
-
+                <img src={dog_image1} alt="A dog wearing a graduate hat and glasses." />
             </PageHeading>
 
             <main>
