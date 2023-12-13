@@ -4,12 +4,12 @@
     gap: 6rem;
 
     .page-heading {
-        overflow: visible;
 
         section {
 
             img {
-                transform: scale(1.5);
+                width: auto;
+                transform: scale(1.5) translateX(-3rem);
             }
         }
     }
