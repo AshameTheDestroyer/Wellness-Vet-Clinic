@@ -49,6 +49,11 @@
                 place-content: center;
                 place-items: center;
                 flex-wrap: wrap;
+                gap: 2rem 1rem;
+
+                li a {
+                    padding: 1rem;
+                }
             }
         }
 
@@ -56,10 +61,63 @@
             display: none;
         }
 
-        #sign-in-button {
-            background-color: transparent;
-            height: min-content;
+        #sign-button {
             place-self: center;
+
+            background-color: transparent;
+        }
+
+        #logged-user-displayer {
+            display: flex;
+            place-content: center;
+            place-items: center;
+            place-self: center;
+            gap: 1rem;
+
+            padding-top: 1rem;
+
+            .drop-down {
+
+                &>button {
+                    $size: 2rem;
+
+                    width: $size;
+                    height: $size;
+
+                    display: flex;
+                    place-content: center;
+                    place-items: center;
+
+                    padding: 0rem;
+
+                    background-color: transparent;
+                }
+
+                .drop-down-wrapper {
+                    background-color: var(--main-colour);
+
+                    .drop-down-container {
+
+                        &>* {
+                            text-decoration: none;
+
+                            display: flex;
+                            place-content: center;
+                            place-items: center;
+
+                            transition: background-color 250ms;
+
+                            &#sign-button {
+                                width: max-content;
+                            }
+
+                            &:is(:hover, :focus-within) {
+                                background-color: var(--main-darker-colour);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -153,6 +211,14 @@
                             text-align: center;
                         }
                     }
+                }
+            }
+
+            #logged-user-displayer {
+
+                .drop-down>button svg {
+                    fill: var(--background-colour);
+                    stroke: var(--background-colour);
                 }
             }
         }

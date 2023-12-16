@@ -6,22 +6,23 @@ import HomePage from "./pages/HomePage/HomePage";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import MainPageLayout from "./layouts/MainPageLayout/MainPageLayout";
 import AccessoriesPage from "./pages/AccessoriesPage/AccessoriesPage";
+import PetDashboardPage from "./pages/PetDashboardPage/PetDashboardPage";
+import DashboardPageLayout from "./layouts/DashboardPageLayout/DashboardPageLayout";
 
 import "./utils/extensions/ToClassName";
 
 import "./index.scss";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import DashboardPageLayout from "./layouts/DashboardPageLayout/DashboardPageLayout";
-import PetDashboardPage from "./pages/PetDashboardPage/PetDashboardPage";
 
 type MainStateProps = {
-    user?: User;
+    loggedUser?: User;
     isDarkThemed: boolean;
 
-    ToggleDarkTheme: () => void;
+    toggleDarkTheme: () => void;
+    setLoggedUser: (user: User) => void;
 };
 
 export const MainContext: React.Context<MainStateProps> = createContext<MainStateProps>(null);
@@ -49,7 +50,7 @@ ReactDOM.createRoot(ROOT_DIV_ELEMENT ?? document.body).render(<Index />);
 function Index(): React.ReactElement {
     const [header, setHeader] = useState<HTMLElement>(null);
     const [state, setState] = useState<MainStateProps>({
-        user: {
+        loggedUser: {
             id: 1,
             gender: "male",
             name: "Hashem Wannous",
@@ -57,7 +58,8 @@ function Index(): React.ReactElement {
         },
         isDarkThemed: false,
 
-        ToggleDarkTheme,
+        setLoggedUser: SetLoggedUser,
+        toggleDarkTheme: ToggleDarkTheme,
     });
 
     useEffect(() => {
@@ -81,7 +83,7 @@ function Index(): React.ReactElement {
 
     function ToggleDarkTheme(): void {
         state.isDarkThemed = !state.isDarkThemed;
-        setState({ ...state });
+        setState(previousValue => ({ ...previousValue }));
 
         document.body.classList.toggle("light-themed");
         document.body.classList.toggle("dark-themed");
@@ -90,6 +92,16 @@ function Index(): React.ReactElement {
         for (const [key, value] of Object.entries(style)) {
             ROOT.style.setProperty(key, value);
         }
+    }
+
+    function SetLoggedUser(user: User): void {
+        setState(previousValue => ({
+            ...previousValue,
+            loggedUser: user ? {
+                ...previousValue.loggedUser,
+                ...user,
+            } : null,
+        }));
     }
 
     return (

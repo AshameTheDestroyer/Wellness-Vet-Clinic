@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import NavigationBar from "../../../components/NavigationBar/NavigationBar.tsx";
 
@@ -14,18 +14,33 @@ import CrossIcon from "../../../assets/icons/CrossIcon.tsx";
 import parrot_image from "../../../assets/images/transparent/parrot.png";
 import HamburgerButton from "../../../utils/components/HamburgerButton/HamburgerButton.tsx";
 import HamburgerButtonIcon from "../../../assets/icons/HamburgerButtonIcon.tsx";
+import { MainContext } from "../../../index.tsx";
+import DropDown from "../../../utils/components/DropDown/DropDown.tsx";
+import { Link } from "react-router-dom";
 
 export default function Header(): React.ReactElement {
-    const [isSigningModalOpen, setIsSigningModalOpen] = useState<boolean>(false);
-    const [isNavigationContainerOpen, setIsNavigationContainerOpen] = useState<boolean>(false);
-
     return (
         <header id="header" className="sticking-header">
             <Logo />
 
-            <button id="hamburger-button" onClick={_e => setIsNavigationContainerOpen(true)}>
-                <HamburgerButtonIcon />
-            </button>
+            <NavigationContainer />
+        </header>
+    );
+}
+
+function NavigationContainer(): React.ReactElement {
+    const [isNavigationContainerOpen, setIsNavigationContainerOpen] = useState<boolean>(false);
+
+    return (
+        <>
+            <button
+                id="hamburger-button"
+
+                onClick={_e => setIsNavigationContainerOpen(true)}
+
+                children={<HamburgerButtonIcon />}
+            />
+
             <section
                 id="navigation-background"
 
@@ -33,6 +48,7 @@ export default function Header(): React.ReactElement {
 
                 onClick={_e => setIsNavigationContainerOpen(false)}
             />
+
             <section
                 id="navigation-container"
 
@@ -42,27 +58,56 @@ export default function Header(): React.ReactElement {
                     id="navigation-container-close-button"
 
                     onClick={_e => setIsNavigationContainerOpen(false)}
-                >
-                    <CrossIcon />
-                </button>
+
+                    children={<CrossIcon />}
+                />
+
                 <NavigationBar anchors={PAGE_ANCHORS} />
-                <button
-                    id="sign-in-button"
 
-                    onClick={_e => setIsSigningModalOpen(true)}
-                >
-                    Sign in
-                </button>
+                <SigningInButton />
             </section>
-
-            <SigningModal
-                isOpen={isSigningModalOpen}
-
-                setIsOpen={setIsSigningModalOpen}
-            />
-        </header>
+        </>
     );
 }
+
+function SigningInButton(): React.ReactElement {
+    const MainState = useContext(MainContext);
+    const [isSigningModalOpen, setIsSigningModalOpen] = useState<boolean>(false);
+
+    return (
+        (MainState.loggedUser != null) ?
+            <div id="logged-user-displayer">
+                <p>{MainState.loggedUser.name}</p>
+
+                <DropDown>
+                    <Link to="/Profile">Profile</Link>
+                    <button
+                        id="sign-button"
+
+                        onClick={_e => MainState.setLoggedUser(null)}
+
+                        children="Sign out" /
+                    >
+                </DropDown>
+            </div> :
+            <>
+                <button
+                    id="sign-button"
+
+                    onClick={_e => setIsSigningModalOpen(true)}
+
+                    children="Sign in"
+                />
+
+                <SigningModal
+                    isOpen={isSigningModalOpen}
+
+                    setIsOpen={setIsSigningModalOpen}
+                />
+            </>
+    );
+}
+
 enum SigningMethod {
     SignUp = "Sign up",
     SignIn = "Sign in",
