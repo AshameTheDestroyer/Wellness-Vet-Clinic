@@ -76,6 +76,10 @@
 
             padding-top: 1rem;
 
+            #logged-user-name {
+                text-decoration: none;
+            }
+
             .drop-down {
 
                 &>button {
@@ -381,4 +385,39 @@
 #signing-modal-background {
     background-color: var(--main-transparent-colour);
     z-index: 19;
+}
+
+.navigation-anchor {
+
+    &>a {
+        --line-scale: 0;
+        text-decoration: none;
+
+        position: relative;
+
+        padding: 1rem 2rem;
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0.3rem;
+
+            transform-origin: center;
+            transform: scaleX(calc(0.5 * var(--line-scale)));
+
+            background-color: var(--main-colour);
+
+            border-radius: 100rem;
+
+            transition: transform 250ms;
+        }
+    }
+
+    &:is([data-is-navigated-to=true], :hover)>a {
+        --line-scale: 1;
+    }
 }

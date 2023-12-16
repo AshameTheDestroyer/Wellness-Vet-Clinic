@@ -43,18 +43,28 @@ function FormatPageAnchor(anchor: PageAnchor): Exclude<PageAnchor, string> {
 }
 
 function PageAnchorElement(props: PageAnchorElementProps): React.ReactElement {
-    const location = useLocation();
     const anchor: PageAnchor = FormatPageAnchor(props.anchor);
 
-    const
-        hasSameUrl: boolean = location.pathname.slice(1) == anchor.url,
-        isSubUrlOfUrl: boolean = location.pathname.slice(1).startsWith(anchor.url),
-        isIndexUrl: boolean = anchor.url.split("/").at(-1) == "",
-        isNavigatedTo: boolean = hasSameUrl || isSubUrlOfUrl && !isIndexUrl;
-
     return (
-        <li data-navigated-to={isNavigatedTo}>
+        <li
+            className="navigation-anchor"
+
+            data-is-navigated-to={IsNavigatedTo(anchor.url)}
+        >
             <Link to={`/${anchor.url}`}>{anchor.name}</Link>
         </li>
     );
+}
+
+export
+    function IsNavigatedTo(url: string): boolean {
+    const location = useLocation();
+
+    const
+        hasSameUrl: boolean = location.pathname.slice(1) == url,
+        isSubUrlOfUrl: boolean = location.pathname.slice(1).startsWith(url),
+        isIndexUrl: boolean = url.split("/").at(-1) == "",
+        isNavigatedTo: boolean = hasSameUrl || isSubUrlOfUrl && !isIndexUrl;
+
+    return isNavigatedTo;
 }

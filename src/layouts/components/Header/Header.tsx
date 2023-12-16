@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import NavigationBar from "../../../components/NavigationBar/NavigationBar.tsx";
+import NavigationBar, { IsNavigatedTo } from "../../../components/NavigationBar/NavigationBar.tsx";
 
 import "./Header.scss";
 
@@ -77,7 +77,19 @@ function SigningInButton(): React.ReactElement {
     return (
         (MainState.loggedUser != null) ?
             <div id="logged-user-displayer">
-                <p>{MainState.loggedUser.name}</p>
+                <div
+                    className="navigation-anchor"
+
+                    data-is-navigated-to={IsNavigatedTo("Profile")}
+                >
+                    <Link
+                        id="logged-user-name"
+
+                        to="/Profile"
+
+                        children={MainState.loggedUser.name}
+                    />
+                </div>
 
                 <DropDown>
                     <Link to="/Profile">Profile</Link>
@@ -86,8 +98,8 @@ function SigningInButton(): React.ReactElement {
 
                         onClick={_e => MainState.setLoggedUser(null)}
 
-                        children="Sign out" /
-                    >
+                        children="Sign out"
+                    />
                 </DropDown>
             </div> :
             <>
