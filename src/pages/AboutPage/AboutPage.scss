@@ -64,10 +64,15 @@
         gap: 4rem;
 
         h2 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            text-align: center;
+
+            width: 80vw;
+            height: 40vh;
+            height: 40dvh;
+
+            display: flex;
+            place-content: center;
+            place-items: center;
         }
 
         p {
