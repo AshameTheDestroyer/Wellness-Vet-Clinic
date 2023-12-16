@@ -2,7 +2,7 @@ const PAGE_ANCHORS: Array<PageAnchor> = [
     { name: "Home", url: "" },
     "Accessories",
     "Blog",
-    "Appointment",
+    { name: "Contact Us", url: "ContactUs" },
     "About",
 ];
 

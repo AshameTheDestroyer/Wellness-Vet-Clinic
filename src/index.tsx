@@ -5,7 +5,7 @@ import React, { useState, useEffect, createContext, Fragment } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
-import AppointmentPage from "./pages/AppointmentPage/AppointmentPage";
+import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import AccessoriesPage from "./pages/AccessoriesPage/AccessoriesPage";
 import MainPageLayout from "./layouts/MainPageLayout/MainPageLayout";
 
@@ -93,7 +93,7 @@ function Index(): React.ReactElement {
                         <Route index element={<HomePage />} />
                         <Route path="/Blog" element={<BlogPage />} />
                         <Route path="/About" element={<AboutPage />} />
-                        <Route path="/Appointment" element={<AppointmentPage />} />
+                        <Route path="/Appointment" element={<ContactUsPage />} />
                         <Route path="/Accessories" element={<AccessoriesPage />} />
                     </Route>
 
