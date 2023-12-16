@@ -54,6 +54,7 @@ function Index(): React.ReactElement {
             id: 1,
             gender: "male",
             name: "Hashem Wannous",
+            phone: "+963947233978",
             email: "hashemwnoos@gmail.com",
         },
         isDarkThemed: false,

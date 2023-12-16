@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
+import Slider from "../../components/Slider/Slider";
 import PageHeading from "../../layouts/components/PageHeading/PageHeading";
 
 import "./AboutPage.scss";
@@ -8,22 +9,21 @@ import "./AboutPage.scss";
 import dog_cat_image1 from "../../assets/images/transparent/dog_cat2.png";
 import dog_cat_image2 from "../../assets/images/transparent/dog_cat3.png";
 import dog_image from "../../assets/images/wallpapers/dog3.png";
-import Slider from "../../components/Slider/Slider";
 
 export type Service = {
     id: number;
-    name: string;
-    text: string;
+    title: string;
+    description: string;
     imageSource: string;
     imageAlternative: string;
 };
 
-const TEMPORARY_DATA: Array<Service> = new Array(4)
+export const TEMPORARY_SERVICE_DATA: Array<Service> = new Array(44)
     .fill(null)
     .map((_value, i) => ({
         id: i + 1,
-        name: `Service ${i + 1}`,
-        text: `
+        title: `Service ${i + 1}`,
+        description: `
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Est earum molestias consequatur, repudiandae sequi, illum labore vero quo nemo, unde adipisci. Ipsa unde eveniet ex eaque neque consequuntur vero repudiandae?
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Est earum molestias consequatur, repudiandae sequi, illum labore vero quo nemo, unde adipisci.
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa unde eveniet ex eaque neque consequuntur vero repudiandae?
@@ -37,11 +37,11 @@ export default function AboutPage(): React.ReactElement {
 
     const
         selectedServiceId: string = searchParams.get("service-id"),
-        selectedService: Service = TEMPORARY_DATA.find(datum => datum.id.toString() == selectedServiceId);
+        selectedService: Service = TEMPORARY_SERVICE_DATA.find(datum => datum.id.toString() == selectedServiceId);
 
     return (
         <main id="about-page">
-            <PageHeading title={selectedService?.name ?? `About us`}>
+            <PageHeading title={selectedService?.title ?? `About us`}>
                 <img src={dog_cat_image1} alt="A dog and a cat sitting." />
             </PageHeading>
 
@@ -91,7 +91,7 @@ function ServiceButtonDisplayer(props: ServiceButtonDisplayerProps): React.React
         <section id="service-button-displayer">
             <h2>Our Services</h2>
             <Slider> {
-                TEMPORARY_DATA
+                TEMPORARY_SERVICE_DATA
                     .map((service, i) =>
                         <button
                             key={i}
@@ -99,7 +99,7 @@ function ServiceButtonDisplayer(props: ServiceButtonDisplayerProps): React.React
                             data-is-selected={props.selectedServiceId == service.id}
                             tabIndex={-1}
                         >
-                            <Link to={`./?service-id=${service.id}`}>{service.name}</Link>
+                            <Link to={`./?service-id=${service.id}`}>{service.title}</Link>
                         </button>
                     )
             } </Slider>
@@ -112,7 +112,7 @@ type ServiceDisplayerProps = Service;
 function ServiceDisplayer(props: ServiceDisplayerProps): React.ReactElement {
     return (
         <main id="service-displayer">
-            <p>{props.text}</p>
+            <p>{props.description}</p>
             <img src={props.imageSource} alt={props.imageAlternative} />
         </main>
     );

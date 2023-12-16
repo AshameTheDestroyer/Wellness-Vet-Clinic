@@ -1,0 +1,163 @@
+@use "../../index.scss";
+
+#profile-page {
+
+    &[data-is-logged-in=false] {
+        display: flex;
+        place-content: center;
+        place-items: center;
+
+        &>main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+    }
+
+    .page-heading {
+        height: 30rem;
+
+        h1 {
+            margin-top: -5rem;
+        }
+    }
+
+    &>main {
+        $box-shadow: 0.1rem 0.1rem 0.5rem var(--quarter-transparent),
+            -0.1rem 0.1rem 0.5rem var(--quarter-transparent),
+            0.1rem -0.1rem 0.5rem var(--quarter-transparent),
+            -0.1rem -0.1rem 0.5rem var(--quarter-transparent),
+        ;
+
+        display: flex;
+        place-content: start;
+        place-items: start;
+        gap: 4rem;
+
+        #user-card {
+            position: sticky;
+            top: 2rem;
+            max-height: calc(100vh - 8rem);
+            max-height: calc(100dvh - 8rem);
+            min-height: 50rem;
+            min-width: 24rem;
+
+            display: flex;
+            flex-direction: column;
+            place-content: center start;
+            place-items: center start;
+            gap: 4rem;
+
+            margin-top: -10rem;
+            padding: 2rem;
+
+            background-color: var(--background-colour);
+            border-radius: 2rem;
+
+            box-shadow: $box-shadow;
+
+            &>figure {
+                $size: 20rem;
+
+                width: $size;
+                height: $size;
+                aspect-ratio: 1;
+
+                display: flex;
+
+                img {
+                    width: $size;
+                    height: $size;
+
+                    border-radius: 100%;
+
+                    background-color: green;
+                }
+            }
+
+            &>main {
+                display: flex;
+                flex-direction: column;
+                place-content: start;
+                place-items: start;
+                gap: 1rem;
+            }
+
+            .button-displayer {
+                width: max-content;
+
+                display: flex;
+                flex-direction: column;
+                place-content: stretch;
+                place-items: stretch;
+
+                button {
+                    display: flex;
+
+                    color: var(--background-colour);
+                    background-color: var(--main-colour);
+
+                    svg {
+                        fill: var(--background-colour);
+                        stroke: var(--background-colour);
+                    }
+                }
+            }
+        }
+
+        #service-displayer {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+
+            margin-top: var(--padding);
+            padding: 4rem;
+
+            .service-card {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+
+                padding: 2rem;
+
+                background-color: var(--background-colour);
+                border-radius: 1rem;
+
+                box-shadow: $box-shadow;
+
+                &>p {
+                    display: -webkit-box;
+
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+
+                    overflow: hidden;
+                }
+            }
+        }
+
+        @media (max-width: index.$second-screen-width) {
+            flex-direction: column;
+
+            #user-card {
+                position: static;
+                max-height: max-content;
+
+                .slider {
+                    --item-padding: 0;
+                    --padding: 0;
+                }
+            }
+
+            #service-displayer {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: index.$third-screen-width) {
+            place-content: center;
+            place-items: center;
+        }
+    }
+}
