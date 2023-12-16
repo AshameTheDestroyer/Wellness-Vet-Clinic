@@ -7,6 +7,7 @@ import IconText from "../../components/IconText/IconText";
 import PhoneIcon from "../../assets/icons/PhoneIcon";
 import { TEMPORARY_SERVICE_DATA } from "../AboutPage/AboutPage";
 import Slider from "../../components/Slider/Slider";
+import ReadMoreText from "../../utils/components/ReadMoreText/ReadMoreText";
 
 export default function ProfilePage(): React.ReactElement {
     const MainState = useContext(MainContext);
@@ -90,7 +91,10 @@ function ServiceDisplayer(): React.ReactElement {
                 TEMPORARY_SERVICE_DATA.map(service =>
                     <div key={service.id} className="service-card">
                         <h3>{service.title}</h3>
-                        <p>{service.description}</p>
+                        <ReadMoreText
+                            lineCount={3}
+                            text={service.description}
+                        />
                     </div>
                 )
             }

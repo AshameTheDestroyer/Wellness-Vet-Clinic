@@ -37,8 +37,8 @@
         #user-card {
             position: sticky;
             top: 2rem;
-            max-height: calc(100vh - 8rem);
-            max-height: calc(100dvh - 8rem);
+            max-height: calc(100vh - 4rem);
+            max-height: calc(100dvh - 4rem);
             min-height: 50rem;
             min-width: 24rem;
 
@@ -46,7 +46,7 @@
             flex-direction: column;
             place-content: center start;
             place-items: center start;
-            gap: 4rem;
+            gap: 2rem;
 
             margin-top: -10rem;
             padding: 2rem;
@@ -124,15 +124,6 @@
                 border-radius: 1rem;
 
                 box-shadow: $box-shadow;
-
-                &>p {
-                    display: -webkit-box;
-
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 3;
-
-                    overflow: hidden;
-                }
             }
         }
 

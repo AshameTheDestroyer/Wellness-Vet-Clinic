@@ -8,6 +8,7 @@ import "./BlogPage.scss";
 
 import dog_image1 from "../../assets/images/transparent/dog4.png";
 import dog_image2 from "../../assets/images/wallpapers/dog4.png";
+import ReadMoreText from "../../utils/components/ReadMoreText/ReadMoreText";
 
 const TEMPORARY_DATA: Array<{
     id: number;
@@ -81,7 +82,11 @@ function BlogDisplayer(props: BlogDisplayerProps): React.ReactElement {
                     <img src={datum.imageSource} alt={datum.imageAlternative} />
                     <div>
                         <h3>{datum.title}</h3>
-                        <p>{datum.text}</p>
+                        <ReadMoreText
+                            lineCount={3}
+                            isUntogglable
+                            text={datum.text}
+                        />
                     </div>
                 </div>
             )
