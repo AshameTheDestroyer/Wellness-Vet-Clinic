@@ -1,23 +1,24 @@
 import ReactDOM from "react-dom/client";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import React, { useState, useEffect, createContext, Fragment } from "react";
 
 import HomePage from "./pages/HomePage/HomePage";
+import BlogPage from "./pages/BlogPage/BlogPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
-import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
-import AccessoriesPage from "./pages/AccessoriesPage/AccessoriesPage";
 import MainPageLayout from "./layouts/MainPageLayout/MainPageLayout";
+import AccessoriesPage from "./pages/AccessoriesPage/AccessoriesPage";
 
 import "./utils/extensions/ToClassName";
 
 import "./index.scss";
-import LandingPage from "./pages/LandingPage/LandingPage";
-import PAGE_ANCHORS from "./constants/PageAnchors";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
-import BlogPage from "./pages/BlogPage/BlogPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import DashboardPageLayout from "./layouts/DashboardPageLayout/DashboardPageLayout";
+import PetDashboardPage from "./pages/PetDashboardPage/PetDashboardPage";
 
 type MainStateProps = {
+    user?: User;
     isDarkThemed: boolean;
 
     ToggleDarkTheme: () => void;
@@ -48,6 +49,12 @@ ReactDOM.createRoot(ROOT_DIV_ELEMENT ?? document.body).render(<Index />);
 function Index(): React.ReactElement {
     const [header, setHeader] = useState<HTMLElement>(null);
     const [state, setState] = useState<MainStateProps>({
+        user: {
+            id: 1,
+            gender: "male",
+            name: "Hashem Wannous",
+            email: "hashemwnoos@gmail.com",
+        },
         isDarkThemed: false,
 
         ToggleDarkTheme,
@@ -93,12 +100,17 @@ function Index(): React.ReactElement {
                         <Route index element={<HomePage />} />
                         <Route path="/Blog" element={<BlogPage />} />
                         <Route path="/About" element={<AboutPage />} />
-                        <Route path="/Appointment" element={<ContactUsPage />} />
+                        <Route path="/ContactUs" element={<ContactUsPage />} />
                         <Route path="/Accessories" element={<AccessoriesPage />} />
+                        <Route path="/Profile" element={<ProfilePage />} />
+                        <Route path="/Dashboard">
+                            <Route index element={<Navigate to="/ErrorPage" />} />
+                            <Route path="/Dashboard" element={<DashboardPageLayout />}>
+                                <Route path="/Dashboard/Pets" element={<PetDashboardPage />} />
+                            </Route>
+                        </Route>
                     </Route>
 
-                    <Route path="/Landing" element={<LandingPage />} />
-                    <Route path="/Authentication" element={<AuthenticationPage />} />
 
                     <Route path="*" element={<ErrorPage />} />
                 </Routes>
