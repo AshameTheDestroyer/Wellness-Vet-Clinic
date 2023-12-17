@@ -52,13 +52,16 @@
     .icon-text-displayer {
         display: flex;
         flex-direction: column;
-        place-content: center;
-        place-items: center;
+        place-content: start;
+        place-items: start;
         gap: 2rem;
 
-        .icon-text svg {
-            fill: var(--background-colour);
-            stroke: var(--background-colour);
+        .icon-text {
+
+            svg {
+                fill: var(--background-colour);
+                stroke: var(--background-colour);
+            }
         }
     }
 

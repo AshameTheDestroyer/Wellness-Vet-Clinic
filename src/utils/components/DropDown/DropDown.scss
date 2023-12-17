@@ -3,8 +3,18 @@
 
     position: relative;
 
-    &>button svg {
-        transition: transform 250ms;
+    &>button {
+        display: flex;
+        place-content: center start;
+        place-items: center start;
+        gap: 2rem;
+
+        svg {
+            transition: transform 250ms;
+
+            width: 2rem;
+            height: 2rem;
+        }
     }
 
     .drop-down-wrapper {
@@ -44,7 +54,7 @@
 
     &[data-is-open=true] {
 
-        &>button svg {
+        &[data-has-custom-icon=false]>button svg {
             transform: rotate(180deg);
         }
 
@@ -52,11 +62,4 @@
             grid-template-rows: 1fr;
         }
     }
-}
-
-.drop-down-background {
-    position: fixed;
-    inset: 0;
-    background-color: red;
-    opacity: 0.5;
 }

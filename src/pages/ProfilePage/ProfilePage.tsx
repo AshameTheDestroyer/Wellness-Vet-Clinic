@@ -17,6 +17,8 @@ import PhoneIcon from "../../assets/icons/PhoneIcon";
 import PencilIcon from "../../assets/icons/PencilIcon";
 import cat_image from "../../assets/images/wallpapers/cat1.png";
 import AppointmentIcon from "../../assets/icons/AppointmentIcon";
+import DropDown from "../../utils/components/DropDown/DropDown";
+import { Link } from "react-router-dom";
 
 export default function ProfilePage(): React.ReactElement {
     const MainState = useContext(MainContext);
@@ -78,9 +80,17 @@ function UserCard(props: UserCardProps): React.ReactElement {
             </main>
 
             <Slider className="button-displayer" direction="vertical">
-                <button>
-                    <IconText icon={<PencilIcon />} text="Edit Information" />
-                </button>
+                <DropDown text="Edit Information" icon={<PencilIcon />}>
+                    <Link
+                        to="#"
+                        children={<IconText icon={<PhoneIcon />} text="Edit Phone" />}
+                    />
+
+                    <Link
+                        to="#"
+                        children={<IconText icon={<MailIcon />} text="Edit Email" />}
+                    />
+                </DropDown>
                 <button>
                     <IconText icon={<PetIcon />} text="My Pets" />
                 </button>

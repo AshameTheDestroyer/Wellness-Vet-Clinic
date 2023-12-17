@@ -112,6 +112,8 @@
                 place-items: stretch;
 
                 button {
+                    width: 100%;
+
                     display: flex;
 
                     color: var(--background-colour);
@@ -119,6 +121,52 @@
 
                     svg {
                         fill: var(--background-colour);
+                        stroke: var(--background-colour);
+                    }
+                }
+
+                .drop-down {
+
+                    &[data-is-open=false] .drop-down-wrapper {
+                        box-shadow: none;
+                    }
+
+                    .drop-down-wrapper {
+                        top: calc(100% - 1rem);
+                        right: 0;
+                        left: 0;
+                        width: 100%;
+
+                        padding-top: 1rem;
+
+                        color: var(--background-colour);
+                        background-color: var(--main-colour);
+                        border-top-left-radius: 0;
+                        border-top-right-radius: 0;
+
+                        transition: grid-template-rows 250ms, box-shadow 250ms;
+
+                        a {
+                            text-decoration: none;
+
+                            display: flex;
+                            flex-direction: column;
+                            place-content: start;
+                            place-items: start;
+
+                            padding: 1rem 2rem;
+
+                            transition: background-color 250ms;
+
+                            &:is(:hover, :focus-within) {
+                                background-color: var(--main-lighter-colour);
+                            }
+
+                            svg {
+                                fill: var(--background-colour);
+                                stroke: var(--background-colour);
+                            }
+                        }
                     }
                 }
             }
