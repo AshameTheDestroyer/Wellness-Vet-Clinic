@@ -5,7 +5,7 @@ import ComponentProps from "../../../utils/types/ComponentProps";
 import "./PageHeading.scss";
 
 type PageHeadingProps = {
-    title: string;
+    title?: string;
 } & ComponentProps;
 
 export default function PageHeading(props: PageHeadingProps): React.ReactElement {
@@ -17,7 +17,7 @@ export default function PageHeading(props: PageHeadingProps): React.ReactElement
                 props.className,
             ].toClassName()}
         >
-            <h1>{props.title}</h1>
+            {(props.title != null) && <h1>{props.title}</h1>}
             <section>{props.children}</section>
         </header>
     );

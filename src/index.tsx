@@ -6,12 +6,13 @@ import HomePage from "./pages/HomePage/HomePage";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import BookingPage from "./pages/BookingPage/BookingPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import MainPageLayout from "./layouts/MainPageLayout/MainPageLayout";
 import AccessoriesPage from "./pages/AccessoriesPage/AccessoriesPage";
 import PetDashboardPage from "./pages/PetDashboardPage/PetDashboardPage";
 import DashboardPageLayout from "./layouts/DashboardPageLayout/DashboardPageLayout";
+import ProfilePage, { ServiceDisplayer, PetDashboard } from "./pages/ProfilePage/ProfilePage";
 
 import "./utils/extensions/ToClassName";
 
@@ -115,7 +116,11 @@ function Index(): React.ReactElement {
                         <Route path="/About" element={<AboutPage />} />
                         <Route path="/ContactUs" element={<ContactUsPage />} />
                         <Route path="/Accessories" element={<AccessoriesPage />} />
-                        <Route path="/Profile" element={<ProfilePage />} />
+                        <Route path="/Profile" element={<ProfilePage />}>
+                            <Route index element={<ServiceDisplayer />} />
+                            <Route path="/Profile/MyPets" element={<PetDashboard user={state.loggedUser} />} />
+                        </Route>
+                        <Route path="/Booking" element={<BookingPage />} />
                         <Route path="/Dashboard">
                             <Route index element={<Navigate to="/ErrorPage" />} />
                             <Route path="/Dashboard" element={<DashboardPageLayout />}>

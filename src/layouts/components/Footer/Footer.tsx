@@ -1,16 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Logo from "../Logo/Logo";
 import PAGE_ANCHORS from "../../../constants/PageAnchors";
 import IconText from "../../../components/IconText/IconText";
 import LocationIcon from "../../../assets/icons/LocationIcon";
 import NavigationBar from "../../../components/NavigationBar/NavigationBar";
-
-import "./Footer.scss";
-import PhoneIcon from "../../../assets/icons/PhoneIcon";
 import SocialMediaButtonDisplayer from "../../../components/SocialMediaButtonDisplayer/SocialMediaButtonDisplayer";
 
+import "./Footer.scss";
+
+import PhoneIcon from "../../../assets/icons/PhoneIcon";
+
 export default function Footer(): React.ReactElement {
+    const Navigate = useNavigate();
+
     return (
         <footer id="footer">
             <section>
@@ -27,7 +31,7 @@ export default function Footer(): React.ReactElement {
                     <IconText icon={<PhoneIcon />} text="94120256" />
                 </div>
 
-                <button>Book an Appointment</button>
+                <button onClick={_e => Navigate("/Booking")}>Book an Appointment</button>
 
                 <SocialMediaButtonDisplayer />
             </section>
