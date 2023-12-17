@@ -213,6 +213,8 @@
                         a {
                             flex-grow: 1;
                             text-align: center;
+
+                            padding: 1rem 3rem;
                         }
                     }
                 }
@@ -238,7 +240,6 @@
             background-color: transparent;
 
             z-index: var(--navigation-z-index);
-            background-color: green;
 
             &[data-is-visible=false] {
                 display: none;

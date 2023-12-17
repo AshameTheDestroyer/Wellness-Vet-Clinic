@@ -77,6 +77,21 @@ function UserCard(props: UserCardProps): React.ReactElement {
                 <button>
                     <IconText icon={<PhoneIcon />} text="Book an Appointment" />
                 </button>
+                <button>
+                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
+                </button>
+                <button>
+                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
+                </button>
+                <button>
+                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
+                </button>
+                <button>
+                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
+                </button>
+                <button>
+                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
+                </button>
             </Slider>
         </div>
     );
