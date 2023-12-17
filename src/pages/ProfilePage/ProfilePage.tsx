@@ -1,13 +1,22 @@
 import React, { useContext } from "react";
 import { MainContext } from "../../index";
 
-import "./ProfilePage.scss";
-import PageHeading from "../../layouts/components/PageHeading/PageHeading";
-import IconText from "../../components/IconText/IconText";
-import PhoneIcon from "../../assets/icons/PhoneIcon";
-import { TEMPORARY_SERVICE_DATA } from "../AboutPage/AboutPage";
 import Slider from "../../components/Slider/Slider";
+import IconText from "../../components/IconText/IconText";
+import PageHeading from "../../layouts/components/PageHeading/PageHeading";
 import ReadMoreText from "../../utils/components/ReadMoreText/ReadMoreText";
+
+import { TEMPORARY_SERVICE_DATA } from "../AboutPage/AboutPage";
+
+import "./ProfilePage.scss";
+
+import PetIcon from "../../assets/icons/PetIcon";
+import UserIcon from "../../assets/icons/UserIcon";
+import MailIcon from "../../assets/icons/MailIcon";
+import PhoneIcon from "../../assets/icons/PhoneIcon";
+import PencilIcon from "../../assets/icons/PencilIcon";
+import cat_image from "../../assets/images/wallpapers/cat.png";
+import AppointmentIcon from "../../assets/icons/AppointmentIcon";
 
 export default function ProfilePage(): React.ReactElement {
     const MainState = useContext(MainContext);
@@ -31,6 +40,7 @@ function ProfileMainSection(props: ProfileMainSectionProps): React.ReactElement 
     return (
         <>
             <PageHeading title={props.loggedUser.name}>
+                <img src={cat_image} alt="A cat looking upwards, admiringly." />
             </PageHeading>
 
             <main>
@@ -53,44 +63,29 @@ function UserCard(props: UserCardProps): React.ReactElement {
 
     return (
         <div id="user-card">
-            <figure>
-                <img
-                    // TODO: add default profile picture.
-                    src={userProfilePicture ?? ""}
-                    alt={`${userPossessiveNoun} profile picture.`}
-                />
-            </figure>
+            <figure> {
+                (userProfilePicture != null) ?
+                    <img
+                        src={userProfilePicture}
+                        alt={`${userPossessiveNoun} profile picture.`}
+                    /> :
+                    <UserIcon />
+            } </figure>
 
             <main>
                 <IconText icon={<PhoneIcon />} text={props.loggedUser.phone} />
-                {/*// TODO: add email icon.*/}
-                <IconText icon={<PhoneIcon />} text={props.loggedUser.email} />
+                <IconText icon={<MailIcon />} text={props.loggedUser.email} />
             </main>
 
             <Slider className="button-displayer" direction="vertical">
                 <button>
-                    <IconText icon={<PhoneIcon />} text="Edit Information" />
+                    <IconText icon={<PencilIcon />} text="Edit Information" />
                 </button>
                 <button>
-                    <IconText icon={<PhoneIcon />} text="My Pets" />
+                    <IconText icon={<PetIcon />} text="My Pets" />
                 </button>
                 <button>
-                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
-                </button>
-                <button>
-                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
-                </button>
-                <button>
-                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
-                </button>
-                <button>
-                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
-                </button>
-                <button>
-                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
-                </button>
-                <button>
-                    <IconText icon={<PhoneIcon />} text="Book an Appointment" />
+                    <IconText icon={<AppointmentIcon />} text="Book an Appointment" />
                 </button>
             </Slider>
         </div>

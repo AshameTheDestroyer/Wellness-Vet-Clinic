@@ -72,9 +72,6 @@
             place-content: center;
             place-items: center;
             place-self: center;
-            gap: 1rem;
-
-            padding-top: 1rem;
 
             #logged-user-name {
                 text-decoration: none;
@@ -108,6 +105,8 @@
                             display: flex;
                             place-content: center;
                             place-items: center;
+
+                            padding: 1rem 2rem;
 
                             transition: background-color 250ms;
 
@@ -221,6 +220,7 @@
             }
 
             #logged-user-displayer {
+                padding-top: 1rem;
 
                 .drop-down>button svg {
                     fill: var(--background-colour);
