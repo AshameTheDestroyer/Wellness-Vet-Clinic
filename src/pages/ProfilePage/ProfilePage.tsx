@@ -15,7 +15,7 @@ import UserIcon from "../../assets/icons/UserIcon";
 import MailIcon from "../../assets/icons/MailIcon";
 import PhoneIcon from "../../assets/icons/PhoneIcon";
 import PencilIcon from "../../assets/icons/PencilIcon";
-import cat_image from "../../assets/images/wallpapers/cat.png";
+import cat_image from "../../assets/images/wallpapers/cat1.png";
 import AppointmentIcon from "../../assets/icons/AppointmentIcon";
 
 export default function ProfilePage(): React.ReactElement {

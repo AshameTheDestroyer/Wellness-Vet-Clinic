@@ -1,0 +1,207 @@
+@use "../../index.scss";
+
+#contact-us-page {
+
+    .page-heading {
+
+        &>section {
+            mask-image: linear-gradient(90deg, transparent, black 20%);
+
+            img {
+                position: relative;
+
+                object-fit: cover;
+
+                opacity: 0.25;
+            }
+        }
+    }
+
+    &>main {
+        $box-shadow: 0.1rem 0.1rem 0.5rem var(--quarter-transparent),
+            -0.1rem 0.1rem 0.5rem var(--quarter-transparent),
+            0.1rem -0.1rem 0.5rem var(--quarter-transparent),
+            -0.1rem -0.1rem 0.5rem var(--quarter-transparent),
+        ;
+
+        margin-top: 4rem;
+
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: repeat(3, auto);
+        place-content: stretch center;
+        place-items: stretch center;
+        gap: 2rem;
+
+        .card-icon {
+            width: calc(100% - 4rem);
+
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            padding: 2rem;
+
+            background-color: var(--background-colour);
+            border-radius: 2rem;
+
+            box-shadow: $box-shadow;
+
+            overflow: hidden;
+
+            &#google-map-card-icon {
+                width: auto;
+                grid-row: 1 / -1;
+                grid-column: 2;
+
+                place-content: stretch;
+
+                &>section {
+                    width: 30vw;
+                    height: 100%;
+
+                    display: flex;
+                    place-content: center;
+                    place-items: center;
+
+                    border-radius: inherit;
+
+                    img {
+                        $size: 100%;
+
+                        width: $size;
+                        aspect-ratio: 1;
+                        object-fit: cover;
+
+                        border-radius: inherit;
+                        box-shadow: $box-shadow;
+                    }
+                }
+            }
+
+            &#social-media-card-icon>section {
+                display: flex;
+                gap: 2rem;
+
+                .qr-code-link {
+                    width: 100%;
+                    max-width: 15rem;
+
+                    display: flex;
+                    flex-direction: column;
+                    place-content: center;
+                    place-items: center;
+
+                    figure {
+                        $size: min(max(13rem, 15vw), 17rem);
+
+                        display: flex;
+                        place-content: center;
+                        place-items: center;
+
+                        width: $size;
+                        height: $size;
+
+                        overflow: hidden;
+
+                        img {
+                            $size: 125%;
+
+                            width: $size;
+                            height: $size;
+                        }
+                    }
+
+                    button {
+                        padding: 0;
+
+                        color: var(--background-colour);
+                        background-color: var(--main-colour);
+
+                        overflow: hidden;
+
+                        place-self: stretch;
+                        flex-grow: 1;
+
+                        a {
+                            display: block;
+                            text-decoration: none;
+
+                            padding: 1rem 2rem;
+                        }
+                    }
+                }
+            }
+
+            p,
+            h2 {
+                white-space: wrap;
+                word-break: break-all;
+
+                width: 100%;
+
+                overflow: hidden;
+            }
+
+            &>main {
+                display: flex;
+                place-content: center stretch;
+                place-items: center stretch;
+                gap: 2rem;
+
+                &>figure {
+                    grid-column: 1;
+                    grid-row: 1 / -1;
+
+                    display: flex;
+
+                    padding: 1rem;
+
+                    background-color: var(--main-lighter-colour);
+
+                    border-radius: 100%;
+
+                    svg {
+                        $size: 4rem;
+
+                        width: $size;
+                        height: $size;
+
+                        fill: var(--background-colour);
+                        stroke: none;
+                    }
+                }
+
+                &>div {
+                    display: flex;
+                    flex-direction: column;
+                    place-content: stretch center;
+                    place-items: stretch center;
+                    gap: 1rem;
+                }
+            }
+        }
+
+        @media (max-width: index.$first-screen-width) {
+            display: flex;
+            flex-direction: column;
+            place-content: center;
+            place-items: center;
+
+            .card-icon {
+                width: 70vw !important;
+
+                &>section {
+                    width: 100% !important;
+                    max-width: 40rem;
+
+                    place-content: center;
+                    place-items: center;
+                    place-self: center;
+                    flex-wrap: wrap;
+                    gap: 2rem;
+                }
+            }
+        }
+    }
+}
