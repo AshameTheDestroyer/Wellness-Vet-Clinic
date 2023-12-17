@@ -80,7 +80,7 @@
                 text-decoration: none;
             }
 
-            .drop-down {
+            #signing-drop-down {
 
                 &>button {
                     $size: 2rem;
@@ -238,6 +238,7 @@
             background-color: transparent;
 
             z-index: var(--navigation-z-index);
+            background-color: green;
 
             &[data-is-visible=false] {
                 display: none;

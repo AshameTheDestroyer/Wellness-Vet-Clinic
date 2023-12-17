@@ -91,7 +91,7 @@ function SigningInButton(): React.ReactElement {
                     />
                 </div>
 
-                <DropDown>
+                <DropDown id="signing-drop-down">
                     <Link to="/Profile">Profile</Link>
                     <button
                         id="sign-button"
