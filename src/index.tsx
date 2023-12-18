@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
-import React, { useState, useEffect, createContext, Fragment } from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import React, { useState, useEffect, createContext } from "react";
 
 import HomePage from "./pages/HomePage/HomePage";
 import BlogPage from "./pages/BlogPage/BlogPage";
@@ -10,9 +10,12 @@ import BookingPage from "./pages/BookingPage/BookingPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import MainPageLayout from "./layouts/MainPageLayout/MainPageLayout";
 import AccessoriesPage from "./pages/AccessoriesPage/AccessoriesPage";
-import PetDashboardPage from "./pages/PetDashboardPage/PetDashboardPage";
-import DashboardPageLayout from "./layouts/DashboardPageLayout/DashboardPageLayout";
-import ProfilePage, { ServiceDisplayer, PetDashboard } from "./pages/ProfilePage/ProfilePage";
+import ProfilePage, { ServiceDisplayer } from "./pages/ProfilePage/ProfilePage";
+
+import PetDashboard from "./components/Dashboards/PetDashboard/PetDashboard";
+import ItemDashboard from "./components/Dashboards/ItemDashboard/ItemDashboard";
+import UserDashboard from "./components/Dashboards/UserDashboard/UserDashboard";
+import AppointmentDashboard from "./components/Dashboards/AppointmentDashboard/AppointmentDashboard";
 
 import "./utils/extensions/ToClassName";
 
@@ -57,6 +60,7 @@ function Index(): React.ReactElement {
             name: "Hashem Wannous",
             phone: "+963947233978",
             email: "hashemwnoos@gmail.com",
+            isAdministrator: true,
         },
         isDarkThemed: false,
 
@@ -116,16 +120,16 @@ function Index(): React.ReactElement {
                         <Route path="/About" element={<AboutPage />} />
                         <Route path="/ContactUs" element={<ContactUsPage />} />
                         <Route path="/Accessories" element={<AccessoriesPage />} />
+
+                        <Route path="/Booking" element={<BookingPage />} />
+
                         <Route path="/Profile" element={<ProfilePage />}>
                             <Route index element={<ServiceDisplayer />} />
                             <Route path="/Profile/MyPets" element={<PetDashboard user={state.loggedUser} />} />
-                        </Route>
-                        <Route path="/Booking" element={<BookingPage />} />
-                        <Route path="/Dashboard">
-                            <Route index element={<Navigate to="/ErrorPage" />} />
-                            <Route path="/Dashboard" element={<DashboardPageLayout />}>
-                                <Route path="/Dashboard/Pets" element={<PetDashboardPage />} />
-                            </Route>
+                            <Route path="/Profile/Dashboards/Pets" element={<PetDashboard />} />
+                            <Route path="/Profile/Dashboards/Items" element={<ItemDashboard />} />
+                            <Route path="/Profile/Dashboards/Users" element={<UserDashboard />} />
+                            <Route path="/Profile/Dashboards/Appointments" element={<AppointmentDashboard />} />
                         </Route>
                     </Route>
 

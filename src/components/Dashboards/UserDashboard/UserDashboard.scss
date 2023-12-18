@@ -1,0 +1,52 @@
+@use "../../../index.scss";
+
+#user-dashboard {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)) !important;
+
+    &>h2 {
+        grid-column: 1 / -1;
+    }
+
+    .user-card {
+        display: flex;
+        place-content: center start;
+        place-items: center start;
+        gap: 2rem;
+
+        &>figure {
+            $size: 10rem;
+
+            width: $size;
+            height: $size;
+
+            display: flex;
+            place-content: center;
+            place-items: center;
+
+            svg {
+                width: $size;
+                height: $size;
+
+                fill: var(--main-colour);
+                stroke: var(--main-colour);
+            }
+        }
+
+        &>main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+    }
+
+    @media (max-width: index.$third-screen-width) {
+
+        .user-card {
+            display: flex;
+            flex-direction: column;
+            place-content: center;
+            place-items: center;
+        }
+    }
+}

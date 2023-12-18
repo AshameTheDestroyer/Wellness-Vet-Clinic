@@ -4,4 +4,5 @@ type User = {
     email: string;
     phone: string;
     gender: "male" | "female";
+    isAdministrator?: boolean;
 };
