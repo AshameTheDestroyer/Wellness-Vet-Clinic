@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import React, { useState, useEffect, createContext } from "react";
 
 import HomePage from "./pages/HomePage/HomePage";
@@ -126,10 +126,12 @@ function Index(): React.ReactElement {
                         <Route path="/Profile" element={<ProfilePage />}>
                             <Route index element={<ServiceDisplayer />} />
                             <Route path="/Profile/MyPets" element={<PetDashboard user={state.loggedUser} />} />
-                            <Route path="/Profile/Dashboards/Pets" element={<PetDashboard />} />
-                            <Route path="/Profile/Dashboards/Items" element={<ItemDashboard />} />
-                            <Route path="/Profile/Dashboards/Users" element={<UserDashboard />} />
-                            <Route path="/Profile/Dashboards/Appointments" element={<AppointmentDashboard />} />
+                            <Route path="/Profile/Dashboards" element={(!state.loggedUser?.isAdministrator) && <Navigate to="/NotFound" />}>
+                                <Route path="/Profile/Dashboards/Pets" element={<PetDashboard />} />
+                                <Route path="/Profile/Dashboards/Items" element={<ItemDashboard />} />
+                                <Route path="/Profile/Dashboards/Users" element={<UserDashboard />} />
+                                <Route path="/Profile/Dashboards/Appointments" element={<AppointmentDashboard />} />
+                            </Route>
                         </Route>
                     </Route>
 
