@@ -1,15 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
+import ComponentProps from "../../utils/types/ComponentProps";
 import DropDown from "../../utils/components/DropDown/DropDown";
 
 import "./CRUDDropDown.scss";
-import ComponentProps from "../../utils/types/ComponentProps";
-import { Link } from "react-router-dom";
+
 import IconText from "../IconText/IconText";
-import PencilIcon from "../../assets/icons/PencilIcon";
-import CrossIcon from "../../assets/icons/CrossIcon";
-import SearchIcon from "../../assets/icons/SearchIcon";
 import TrashIcon from "../../assets/icons/TrashIcon";
+import SearchIcon from "../../assets/icons/SearchIcon";
+import PencilIcon from "../../assets/icons/PencilIcon";
 
 type CRUDDropDown = ComponentProps;
 

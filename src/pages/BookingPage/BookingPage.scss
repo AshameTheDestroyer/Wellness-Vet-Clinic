@@ -38,7 +38,7 @@
         }
     }
 
-    &>main {
+    &>form {
         $box-shadow: 0.1rem 0.1rem 0.5rem var(--quarter-transparent),
             -0.1rem 0.1rem 0.5rem var(--quarter-transparent),
             0.1rem -0.1rem 0.5rem var(--quarter-transparent),
@@ -92,12 +92,21 @@
                     grid-column: 1 / -1;
                 }
 
+                input[type=radio] {
+                    display: none;
+
+                    &[checked]+button {
+                        color: var(--background-colour);
+                        background-color: var(--main-colour);
+                    }
+                }
+
                 button {
                     background-color: var(--background-colour);
 
                     box-shadow: $box-shadow;
 
-                    transition: transform 500ms;
+                    transition: transform 500ms, background-color 500ms, color 500ms;
 
                     &:is(:hover, :focus-within) {
                         transform: scale(1.05);
