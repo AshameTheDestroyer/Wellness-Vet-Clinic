@@ -1,0 +1,20 @@
+#appointment-dashboard {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr)) !important;
+
+    &>h2 {
+        grid-column: 1 / -1;
+    }
+
+    .appointment-card {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .crud-drop-down {
+            .drop-down-wrapper {
+                z-index: 1;
+            }
+        }
+    }
+}
