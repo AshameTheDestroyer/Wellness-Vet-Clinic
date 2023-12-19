@@ -1,0 +1,60 @@
+@use "../../../index.scss";
+
+#item-dashboard {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr)) !important;
+
+    &>h2 {
+        grid-column: 1 / -1;
+    }
+
+    .item-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(2, auto);
+        gap: 2rem;
+
+        &>figure {
+            $size: min(20rem, 100%);
+
+            width: $size;
+
+            display: flex;
+            place-content: start;
+            place-items: start;
+
+            img {
+                $size: 100%;
+
+                min-width: min(max(10rem, 10vw), 15rem);
+                width: $size;
+                height: $size;
+
+                border-radius: 1rem;
+            }
+        }
+
+        &>main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            width: 100%;
+        }
+
+        .read-more-text {
+            grid-row: 2;
+            grid-column: 1 / -1;
+        }
+    }
+
+    @media (max-width: index.$third-screen-width) {
+
+        .item-card {
+            display: flex;
+            flex-direction: column;
+            place-content: center;
+            place-items: center;
+        }
+    }
+}

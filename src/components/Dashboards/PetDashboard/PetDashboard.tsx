@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 
 import Slider from "../../Slider/Slider";
+import CRUDDropDown from "../../CRUDDropDown/CRUDDropDown";
 import { Service, TEMPORARY_SERVICE_DATA } from "../../../pages/AboutPage/AboutPage";
 
 import "./PetDashboard.scss";
 
 import cat_image from "../../../assets/images/wallpapers/cat2.png";
 import rabbit_image from "../../../assets/images/wallpapers/rabbit2.png";
-import { useContext } from "react";
-import { MainContext } from "../../..";
-import CRUDDropDown from "../../CRUDDropDown/CRUDDropDown";
 
 type PetWithImageAndServices = Pet & {
     imageSource: string;
@@ -79,7 +77,7 @@ export default function PetDashboard(props: PetDashboardProps): React.ReactEleme
                                     <p>No services are used for this pet yet.</p>
                             }
                         </section>
-                        {(props.user == null) && <CRUDDropDown />}
+                        <CRUDDropDown />
                     </div>
                 )
             }
