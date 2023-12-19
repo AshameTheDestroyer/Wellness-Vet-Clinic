@@ -26,7 +26,7 @@ export default function BookingPage(): React.ReactElement {
                         <h2>Morning</h2>
                         {
                             new Array(6).fill(null).map((_value, i) =>
-                                <button>{`${~~(i / 2 + 9)}`.padStart(2, "0")}:{`${i % 2 * 30}`.padEnd(2, "0")}</button>
+                                <button key={i}>{`${~~(i / 2 + 9)}`.padStart(2, "0")}:{`${i % 2 * 30}`.padEnd(2, "0")}</button>
                             )
                         }
                     </div>
@@ -35,7 +35,7 @@ export default function BookingPage(): React.ReactElement {
                         <h2>Evening</h2>
                         {
                             new Array(6).fill(null).map((_value, i) =>
-                                <button>{`${~~(i / 2 + 14)}`.padStart(2, "0")}:{`${i % 2 * 30}`.padEnd(2, "0")}</button>
+                                <button key={i}>{`${~~(i / 2 + 14)}`.padStart(2, "0")}:{`${i % 2 * 30}`.padEnd(2, "0")}</button>
                             )
                         }
                     </div>

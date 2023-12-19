@@ -2,7 +2,7 @@
 
 #user-dashboard {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)) !important;
 
     &>h2 {
         grid-column: 1 / -1;
@@ -10,21 +10,23 @@
 
     .user-card {
         display: flex;
-        place-content: center start;
-        place-items: center start;
+        place-content: start;
+        place-items: start;
         gap: 2rem;
 
         &>figure {
-            $size: 10rem;
+            $size: max(min(15rem, 15vw), min(15rem, 100%));
 
             width: $size;
-            height: $size;
+            aspect-ratio: 1;
 
             display: flex;
-            place-content: center;
-            place-items: center;
+            place-content: start;
+            place-items: start;
 
             svg {
+                $size: 100%;
+
                 width: $size;
                 height: $size;
 
